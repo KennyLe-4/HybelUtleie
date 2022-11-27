@@ -27,7 +27,10 @@ require_once ('../Includes/db.inc.php')
                     <li class="nav-item"><a class="nav-link active" href="#"> <?php echo "Velkommen, " . $_SESSION['fnavn'];?> </a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
-                </ul><a class="btn btn-primary ms-md-2" role="button" href="homepage.php">Logg ut</a>
+                </ul>
+                <a class="btn btn-primary ms-md-2" role="button" href="homepage.php">Logg ut</a>
+
+
             </div>
         </div>
     </nav>
