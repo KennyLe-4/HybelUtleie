@@ -1,5 +1,5 @@
 <?php
-require_once('Includes/db.inc.php');
+require_once('../Includes/db.inc.php');
 
 $sql = "INSERT INTO bruker 
         (epost, fnavn, enavn, passord) 
@@ -49,11 +49,12 @@ if (isset($_REQUEST['registrer'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>hybel</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/aos.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/Navbar-Right-Links-icons.css">
-    <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
-    <link rel="stylesheet" href="assets/css/Simple-Slider-Simple-Slider.css">
+    <link rel="stylesheet" href="../assets/css/Navbar-Right-Links-icons.css">
+    <link rel="stylesheet" href="../assets/css/Projects-Grid-images.css">
+    <link rel="stylesheet" href="../assets/css/Simple-Slider-Simple-Slider.css">
 </head>
 
 <body>
@@ -64,10 +65,10 @@ if (isset($_REQUEST['registrer'])) {
                     <div class="text-center">
                         <h4 class="text-dark mb-4">Create an Account!</h4>
                     </div>
-                    <form class="user" method="post">
+                    <form class="user" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 						<div class="row mb-3">
 							<div class="mb-3"><input class="form-control form-control-user" name="epost" type="email" id="email" name ="epost" placeholder="Email Address" required=""></div>
-                            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" name="fnavn" placeholder="First Name" required=""></div>
+                            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" name="fnavn" placeholder="First Name" ></div>
                             <div class="col-sm-6"><input class="form-control form-control-user" type="text" placeholder="Last Name" name="enavn" required=""></div>
                         </div>
                         <div class="row mb-3">
@@ -84,13 +85,34 @@ if (isset($_REQUEST['registrer'])) {
                 </div>
             </div>
         </div><script>
+<?php
+if (empty ($_REQUEST["registrer"])) {  
+    $errMsg = "Error! You didn't enter the Name.";  
+             echo $errMsg;  
+} else {  
+    $name = $_POST["fnavn"];  
+}
+$name = $_POST ["fnavn"];  
+if (!preg_match ("/^[a-zA-z]*$/", $name) ) {  
+    $ErrMsg = "Only alphabets and whitespace are allowed.";  
+             echo $ErrMsg;  
+} else {  
+    echo $name;  
+}  
+
+
+?>
 
 
 
 
 
 
-	/*let email = document.getElementById("email")
+
+
+/*
+
+	let email = document.getElementById("email")
 	let password = document.getElementById("password")
 	let verifyPassword = document.getElementById("verifyPassword")
 	let submitBtn = document.getElementById("submitBtn")

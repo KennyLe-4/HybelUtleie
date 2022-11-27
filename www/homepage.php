@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>hybel</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/aos.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/aos.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/Navbar-Right-Links-icons.css">
-    <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
-    <link rel="stylesheet" href="assets/css/Simple-Slider-Simple-Slider.css">
+    <link rel="stylesheet" href="../assets/css/Navbar-Right-Links-icons.css">
+    <link rel="stylesheet" href="../assets/css/Projects-Grid-images.css">
+    <link rel="stylesheet" href="../assets/css/Simple-Slider-Simple-Slider.css">
 </head>
 
 <body>
@@ -41,7 +41,7 @@
                 <div class="py-4">
                     <div class="carousel slide" data-bs-ride="false" id="carousel-6">
                         <div class="carousel-inner">
-                            <div class="carousel-item active"><img class="w-100 d-block" src="assets/img/studio.jpg" alt="Slide Image"></div>
+                            <div class="carousel-item active"><img class="w-100 d-block" src="../assets/img/studio.jpg" alt="Slide Image"></div>
                             <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                             <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                         </div>
@@ -61,7 +61,7 @@
                     <div class="py-4">
                         <div class="carousel slide" data-bs-ride="false" id="carousel-4">
                             <div class="carousel-inner">
-                                <div class="carousel-item active"><img class="w-100 d-block" src="assets/img/studio.jpg" alt="Slide Image"></div>
+                                <div class="carousel-item active"><img class="w-100 d-block" src="../assets/img/studio.jpg" alt="Slide Image"></div>
                                 <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                                 <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                             </div>
@@ -82,7 +82,7 @@
                     <div class="py-4">
                         <div class="carousel slide" data-bs-ride="false" id="carousel-2">
                             <div class="carousel-inner">
-                                <div class="carousel-item active"><img class="w-100 d-block" src="assets/img/studio.jpg" alt="Slide Image"></div>
+                                <div class="carousel-item active"><img class="w-100 d-block" src="../assets/img/studio.jpg" alt="Slide Image"></div>
                                 <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                                 <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                             </div>
@@ -103,7 +103,7 @@
                     <div class="py-4">
                         <div class="carousel slide" data-bs-ride="false" id="carousel-5">
                             <div class="carousel-inner">
-                                <div class="carousel-item active"><img class="w-100 d-block" src="assets/img/studio.jpg" alt="Slide Image"></div>
+                                <div class="carousel-item active"><img class="w-100 d-block" src="../assets/img/studio.jpg" alt="Slide Image"></div>
                                 <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                                 <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                             </div>
@@ -123,7 +123,7 @@
                 <div class="py-4">
                     <div class="carousel slide" data-bs-ride="false" id="carousel-7">
                         <div class="carousel-inner">
-                            <div class="carousel-item active"><img class="w-100 d-block" src="assets/img/studio.jpg" alt="Slide Image"></div>
+                            <div class="carousel-item active"><img class="w-100 d-block" src="../assets/img/studio.jpg" alt="Slide Image"></div>
                             <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                             <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                         </div>
@@ -142,7 +142,7 @@
                 <div class="py-4">
                     <div class="carousel slide" data-bs-ride="false" id="carousel-3">
                         <div class="carousel-inner">
-                            <div class="carousel-item active"><img class="w-100 d-block" src="assets/img/studio.jpg" alt="Slide Image"></div>
+                            <div class="carousel-item active"><img class="w-100 d-block" src="../assets/img/studio.jpg" alt="Slide Image"></div>
                             <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                             <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                         </div>
@@ -208,11 +208,11 @@
             </div>
         </footer>
     </section>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/aos.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/aos.min.js"></script>
+    <script src="../assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
-    <script src="assets/js/Simple-Slider.js"></script>
+    <script src="../assets/js/Simple-Slider.js"></script>
 </body>
 
 </html>
