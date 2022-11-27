@@ -20,7 +20,7 @@ if (isset($_REQUEST['registrer'])) {
     $epost = $_REQUEST['epost'];
 	$firstname = $_REQUEST['fnavn'];
     $lastname = $_REQUEST['enavn'];
-	$passord = md5($_REQUEST['passord']);
+	$passord = password_hash($_REQUEST['passord'], PASSWORD_DEFAULT);
 
 
 
