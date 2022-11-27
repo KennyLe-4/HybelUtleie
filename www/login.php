@@ -3,7 +3,7 @@
 
 if (isset($_POST['logginn'])) {
 
-    require_once("Includes/db.inc.php");
+    require_once("../Includes/db.inc.php");
 
     $sql = "SELECT brukerID, epost, fnavn, enavn, passord FROM bruker WHERE epost = :epost";
     $sp = $pdo->prepare($sql);
@@ -44,11 +44,11 @@ if (isset($_POST['logginn'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>hybel</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/Navbar-Right-Links-icons.css">
-    <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
-    <link rel="stylesheet" href="assets/css/Simple-Slider-Simple-Slider.css">
+    <link rel="stylesheet" href="../assets/css/Navbar-Right-Links-icons.css">
+    <link rel="stylesheet" href="../assets/css/Projects-Grid-images.css">
+    <link rel="stylesheet" href="../assets/css/Simple-Slider-Simple-Slider.css">
 </head>
 
 <body>
