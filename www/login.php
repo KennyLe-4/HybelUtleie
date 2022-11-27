@@ -71,6 +71,7 @@ if (isset($_POST['logginn'])) {
                                 <div class="mb-3"><input class="form-control" type="email" name="epost" placeholder="Email"></div>
                                 <div class="mb-3"><input class="form-control" type="password" name="passord" placeholder="Password"></div>
                                 <div class="mb-3"><button class="btn btn-primary d-block w-100" name ="logginn" id="logginn">Login</button></div>
+                                <a class="small" href="registrerBruker.php">Har du ikke bruker? Registrer deg her!</a>
                             </form>
                         </div>
                     </div>
