@@ -1,5 +1,5 @@
 <?php
-require_once('/Applications/XAMPP/xamppfiles/htdocs/IS-115/Hybel/Includes/db.inc.php');
+require_once('Includes/db.inc.php');
 
 $sql = "INSERT INTO bruker 
         (epost, fnavn, enavn, passord) 
