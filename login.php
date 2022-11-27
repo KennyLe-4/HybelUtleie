@@ -3,15 +3,12 @@
 
 if (isset($_POST['logginn'])) {
 
-    require_once("/Applications/XAMPP/xamppfiles/htdocs/IS-115/Hybel/Includes/db.inc.php");
+    require_once("Includes/db.inc.php");
 
-    $sql = "SELECT ID, brukerID, epost, fnavn, enavn, passord FROM bruker WHERE brukerID = :brukerID";
+    $sql = "SELECT brukerID, epost, fnavn, enavn, passord FROM bruker WHERE epost = :epost";
     $sp = $pdo->prepare($sql);
-    $sp->bindParam(':brukernavn', $brukernavn, PDO::PARAM_STR);
-    $sp->bindParam(':passord', $passord, PDO::PARAM_STR);
-
-    $brukernavn = $_POST['brukernavn'];
-    $brukernavn = $_POST['passord'];
+    $sp->bindParam(':epost', $epost, PDO::PARAM_STR);
+    $epost = $_POST['epost'];
 
 
     try {
@@ -29,9 +26,8 @@ if (isset($_POST['logginn'])) {
             $_SESSION['brukerID'] = $bruker->brukerID;
             $_SESSION['fnavn'] = $bruker->fnavn;
             $_SESSION['enavn'] = $bruker->enavn;
-            $_SESSION['ID'] = $bruker->ID;
 
-            header("Location: Velkommen.php"); // Liten test på hvordan det kan se ut. 
+            header("Location: index.php"); // Liten test på hvordan det kan se ut. 
         } else {
             echo "Feil passord";
         }
@@ -72,10 +68,9 @@ if (isset($_POST['logginn'])) {
                                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
                                 </svg></div>
                             <form class="text-center" method="post">
-                                <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+                                <div class="mb-3"><input class="form-control" type="email" name="epost" placeholder="Email"></div>
                                 <div class="mb-3"><input class="form-control" type="password" name="passord" placeholder="Password"></div>
-                                <div class="mb-3"><button class="btn btn-primary d-block w-100" id="logginn">Login</button></div>
-                                <p class="text-muted">Forgot your password?</p>
+                                <div class="mb-3"><button class="btn btn-primary d-block w-100" name ="logginn" id="logginn">Login</button></div>
                             </form>
                         </div>
                     </div>
