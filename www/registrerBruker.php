@@ -24,11 +24,13 @@ function vaskingAvTagger($vask)
   return $vask;
 }
 
+// Hvis registrer knappen er trykket på - gjør funksjonen vaskingAvTagger
 if (isset($_REQUEST['registrer'])) {
-    $epost = vaskingavTagger($_REQUEST['epost']);
-	$firstname = vaskingavTagger($_REQUEST['fnavn']);
-    $lastname = vaskingavTagger($_REQUEST['enavn']);
-	$passord = password_hash($_REQUEST['passord'], PASSWORD_DEFAULT);
+    $epost = vaskingAvTagger($_REQUEST['epost']);
+	$firstname = vaskingAvTagger($_REQUEST['fnavn']);
+    $lastname = vaskingAvTagger($_REQUEST['enavn']);
+	$passord = vaskingAvTagger($_REQUEST['passord']);
+	$passord = password_hash($_REQUEST['passord'], PASSWORD_DEFAULT); 
 
 
 
@@ -42,7 +44,7 @@ if (isset($_REQUEST['registrer'])) {
 
     //Sjekker om noe er satt inn, returnerer UID.
     if ($pdo->lastInsertId() > 0) {
-        echo "Data inserted into database, identified by BID " . $pdo->lastInsertId() . ".";
+        echo "Data inserted into database, identified by BID " . $pdo->lastInsertId() . "."; // Endret på feilmelding
     } else {
         echo "Data were not inserted into database.";
     }
@@ -71,17 +73,17 @@ if (isset($_REQUEST['registrer'])) {
             <div class="col-sm-12 col-lg-10 col-xl-9 col-xxl-7 bg-white shadow-lg" style="border-radius: 5px;">
                 <div class="p-5">
                     <div class="text-center">
-                        <h4 class="text-dark mb-4">Create an Account!</h4>
+                        <h4 class="text-dark mb-4">Registrer en bruker!</h4>
                     </div>
                     <form class="user" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 						<div class="row mb-3">
-							<div class="mb-3"><input class="form-control form-control-user" name="epost" type="email" id="email" name ="epost" placeholder="Email Address" required=""></div>
-                            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" name="fnavn" placeholder="First Name" ></div>
-                            <div class="col-sm-6"><input class="form-control form-control-user" type="text" placeholder="Last Name" name="enavn" required=""></div>
+							<div class="mb-3"><input class="form-control form-control-user" name="epost" type="email" id="email" name ="epost" placeholder="Email Addresse" required=""></div>
+                            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" name="fnavn" placeholder="Fornavn" ></div>
+                            <div class="col-sm-6"><input class="form-control form-control-user" type="text" placeholder="Etternavn" name="enavn" required=""></div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" name="passord" id="password" placeholder="Password" required=""></div>
-                            <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="verifyPassword" name="repassord" placeholder="Repeat Password" required=""></div>
+                            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" name="passord" id="password" placeholder="Passord" required=""></div>
+                            <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="verifyPassword" name="repassord" placeholder="Repeat Passord" required=""></div>
                         </div>
                         <div class="row mb-3">
                             <p id="emailErrorMsg" class="text-danger" style="display:none;">Paragraph</p>
@@ -89,7 +91,7 @@ if (isset($_REQUEST['registrer'])) {
                         </div><button class="btn btn-primary d-block btn-user w-100" id="submitBtn" name="registrer" type="submit">Register Account</button>
                         <hr>
                     </form>
-                    <div class="text-center"><a class="small" href="logginn.php">Already have an account? Login!</a></div>
+                    <div class="text-center"><a class="small" href="logginn.php">Har du allerde en bruker? Logg inn!</a></div>
                 </div>
             </div>
         </div><script>
