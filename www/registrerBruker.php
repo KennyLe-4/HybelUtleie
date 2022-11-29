@@ -24,15 +24,13 @@ function vaskingAvTagger($vask)
   return $vask;
 }
 
-// Hvis registrer knappen er trykket på - gjør funksjonen vaskingAvTagger
+// Hvis registrer knappen er trykket på - utfør funksjonen "vaskingAvTagger". 
 if (isset($_REQUEST['registrer'])) {
     $epost = vaskingAvTagger($_REQUEST['epost']);
 	$firstname = vaskingAvTagger($_REQUEST['fnavn']);
     $lastname = vaskingAvTagger($_REQUEST['enavn']);
 	$passord = vaskingAvTagger($_REQUEST['passord']);
 	$passord = password_hash($_REQUEST['passord'], PASSWORD_DEFAULT); 
-
-
 
     try {
         $q->execute();
