@@ -88,7 +88,7 @@ if (isset($_REQUEST['registrer'])) {
                         <div class="row mb-3">
                             <p id="emailErrorMsg" class="text-danger" style="display:none;">Paragraph</p>
                             <p id="passwordErrorMsg" class="text-danger" style="display:none;">Paragraph</p>
-                        </div><button class="btn btn-primary d-block btn-user w-100" id="submitBtn" name="registrer" type="submit">Register Account</button>
+                        </div><button class="btn btn-primary d-block btn-user w-100" id="submitBtn" name="registrer" type="submit">Registrer bruker</button>
                         <hr>
                     </form>
                     <div class="text-center"><a class="small" href="logginn.php">Har du allerde en bruker? Logg inn!</a></div>
