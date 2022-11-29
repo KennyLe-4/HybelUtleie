@@ -77,7 +77,7 @@ if (isset($_REQUEST['registrer'])) {
                     </div>
                     <form class="user" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 						<div class="row mb-3">
-							<div class="mb-3"><input class="form-control form-control-user" name="epost" type="email" id="email" name ="epost" placeholder="Email Addresse" required=""></div>
+							<div class="mb-3"><input class="form-control form-control-user" name="epost" type="email" id="email" name ="epost" placeholder="Email Adresse" required=""></div>
                             <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" name="fnavn" placeholder="Fornavn" ></div>
                             <div class="col-sm-6"><input class="form-control form-control-user" type="text" placeholder="Etternavn" name="enavn" required=""></div>
                         </div>
