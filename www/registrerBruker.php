@@ -81,7 +81,7 @@ if (isset($_REQUEST['registrer'])) {
                         </div><button class="btn btn-primary d-block btn-user w-100" id="submitBtn" name="registrer" type="submit">Register Account</button>
                         <hr>
                     </form>
-                    <div class="text-center"><a class="small" href="login.php">Already have an account? Login!</a></div>
+                    <div class="text-center"><a class="small" href="logginn.php">Already have an account? Login!</a></div>
                 </div>
             </div>
         </div><script>
