@@ -14,12 +14,20 @@ $q->bindParam(':fnavn', $firstname, PDO::PARAM_STR);
 $q->bindParam(':enavn', $lastname, PDO::PARAM_STR);
 $q->bindParam(':passord', $passord, PDO::PARAM_STR);
 
-
+// Denne funksjonen vasker ulike data. Se nedenfor for å beskrivelse av de ulike funksjonene. 
+function vaskingAvTagger($vask)
+{
+  $vask = trim($vask); // Trim()-funksjonen fjerner mellomrom og andre forhåndsdefinerte tegn fra begge sider av en streng.
+  $vask = strip_tags($vask); // Strip_tags()- funksjonen fjerner HTML, XML og PHP tags. 
+  $vask = htmlentities($vask); // HTMLentites()- funksjonen konverterer alle bokstaver til HTML entities. 
+  $vask = stripslashes($vask); // Stripslashes()-funksjonen fjerner omvendte skråstreker lagt til av addslashes()-funksjonen.
+  return $vask;
+}
 
 if (isset($_REQUEST['registrer'])) {
-    $epost = $_REQUEST['epost'];
-	$firstname = $_REQUEST['fnavn'];
-    $lastname = $_REQUEST['enavn'];
+    $epost = vaskingavTagger($_REQUEST['epost']);
+	$firstname = vaskingavTagger($_REQUEST['fnavn']);
+    $lastname = vaskingavTagger($_REQUEST['enavn']);
 	$passord = password_hash($_REQUEST['passord'], PASSWORD_DEFAULT);
 
 
