@@ -23,7 +23,7 @@ if (isset($_REQUEST['registrer'])) {
     $lastname = vaskingAvTagger($_REQUEST['enavn']);
 	$passord = vaskingAvTagger($_REQUEST['passord']);
 	$passord = password_hash($_REQUEST['passord'], PASSWORD_DEFAULT); 
-
+include_once('./Includes/registrerBruker.inc.php');
     try {
         $q->execute();
     } catch (PDOException $e) {
@@ -40,8 +40,6 @@ if (isset($_REQUEST['registrer'])) {
     }
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,7 +63,7 @@ if (isset($_REQUEST['registrer'])) {
                     <div class="text-center">
                         <h4 class="text-dark mb-4">Registrer en bruker!</h4>
                     </div>
-                    <form class="user" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                    <form class="user" method="post" action="./Includes/registrerBruker.inc.php">
 						<div class="row mb-3">
 							<div class="mb-3"><input class="form-control form-control-user" name="epost" type="email" id="email" name ="epost" placeholder="Email Adresse" required=""></div>
                             <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" name="fnavn" placeholder="Fornavn" ></div>
@@ -85,25 +83,6 @@ if (isset($_REQUEST['registrer'])) {
                 </div>
             </div>
         </div><script>
-<?php
-if (empty ($_REQUEST["registrer"])) {  
-    $errMsg = "Error! You didn't enter the Name.";  
-             echo $errMsg;  
-} else {  
-    $name = $_POST["fnavn"];  
-}
-$name = $_POST ["fnavn"];  
-if (!preg_match ("/^[a-zA-z]*$/", $name) ) {  
-    $ErrMsg = "Only alphabets and whitespace are allowed.";  
-             echo $ErrMsg;  
-} else {  
-    echo $name;  
-}  
-
-
-?>
-
-
 
 
 
