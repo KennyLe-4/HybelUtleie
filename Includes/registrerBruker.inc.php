@@ -20,9 +20,11 @@ if (empty($epost) || empty($firstname) || empty($lastname) || empty($passord)) {
     exit();
 
 } else {
+
 // Sjekker om mail er gyldig
-
-
+} if(!filter_var($epost, FILTER_VALIDATE_EMAIL)) {
+    header("Location: ../index.php?register=ugyldigmail");
+    exit();
 }
 
 ?>
