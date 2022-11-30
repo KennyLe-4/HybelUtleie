@@ -1,6 +1,6 @@
 <?php
 
-require_once ('../Includes/db.inc.php');
+require_once ('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc.php');
 
 
 
@@ -20,21 +20,19 @@ require_once ('../Includes/db.inc.php');
         </tr>
      </thead>
  
-
+<tbody>
 <?php 
-        $query = "SELECT * FROM bruker";
-        $statement = $pdo->prepare($query);
-        $statement->execute();
 
-        $statement->setFetchMode(PDO::FETCH_OBJ);
-        $result = $statement->fetchAll();
-        if($result)
-        {
+
+    $query = "SELECT * FROM bruker";
+    $statement = $pdo->prepare($query);
+   
+    $statement->execute(); 
+    $statement->setFetchMode(PDO::FETCH_OBJ);
+    $result = $statement->fetchAll();
+    if($result){
             foreach($result as $row){
-
-
             ?>
-
             <tr>
                 <td><?= $row->brukerID;?></td>
                 <td><?= $row->fnavn;?></td>
@@ -46,8 +44,7 @@ require_once ('../Includes/db.inc.php');
 
                 </td>
             </tr>
-            </table>
-            </div>
+            
             <?php
         }        }
         else {
@@ -57,6 +54,9 @@ require_once ('../Includes/db.inc.php');
                     <td colspan="5">No Record Found</td>
 
                 </tr>
+                </tbody>
+            </table>
+            </div>
                 <?php
 
 

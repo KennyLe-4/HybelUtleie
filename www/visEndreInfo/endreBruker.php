@@ -1,5 +1,5 @@
 <?php
-require_once ('../Includes/db.inc.php');
+require_once ('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc.php');
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ require_once ('../Includes/db.inc.php');
     <div class="card">
         <div class="card-header">
             <h3>Ender og oppdater bruker
-                <a href="../www/homepage.php" class="btn btn-danger float-end">Hjem</a>
+                <a href="./hjemmeside.php" class="btn btn-danger float-end">Hjem</a>
                 </h3>
         </div>
     <div class="card-body">

@@ -1,5 +1,6 @@
 <?php 
-require_once ('../Includes/db.inc.php')
+require_once ('../Includes/db.inc.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,11 +25,11 @@ require_once ('../Includes/db.inc.php')
                     </svg></span><span>Hybel</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-2">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#"> <?php echo "Velkommen, " . $_SESSION['fnavn'];?> </a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#"> <?php echo "Velkommen, " . $_SESSION['brukerID'];?> </a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                 </ul>
-                <a class="btn btn-secondary ms-md-2" role="button" href="#">Min profil</a>
+                <a class="btn btn-secondary ms-md-2" role="button" href="./visEndreInfo/viseInfo.php"> Min profil</a>
                 <a class="btn btn-secondary ms-md-2" role="button" href="#">Ny annonse</a>
                 <a class="btn btn-primary ms-md-2" role="button" href="loggUt.php">Logg ut</a>
 

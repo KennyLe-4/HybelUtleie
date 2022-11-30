@@ -1,6 +1,6 @@
 <?php
 
-require_once ('../Includes/db.inc.php');
+require_once ('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc.php');
 
 if(isset($_REQUEST['lagreEndringer'])){
 $bruker_id = $_REQUEST['bruker_id'];
@@ -23,7 +23,7 @@ try {
 
     if($query_execute){
         $_SESSION['message'] = "Lagt inn endringene";
-        header('Location: ../www/index.php');
+        header('Location: ./www/hjemmeside.php');
         exit(0);
     }
     else{
