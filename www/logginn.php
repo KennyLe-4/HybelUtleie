@@ -26,8 +26,10 @@ if (isset($_POST['logginn'])) {
             $_SESSION['brukerID'] = $bruker->brukerID;
             $_SESSION['fnavn'] = $bruker->fnavn;
             $_SESSION['enavn'] = $bruker->enavn;
+            $_SESSION['epost'] = $bruker->epost;
+            $_SESSION['passord'] = $bruker->passord;
 
-            header("Location: index.php"); // Liten test på hvordan det kan se ut. 
+            header("Location: hjemmeside.php"); // Liten test på hvordan det kan se ut. 
         } else {
             echo "Feil passord";
         }
