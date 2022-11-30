@@ -27,7 +27,7 @@
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
-                </ul><a class="btn btn-primary ms-md-2" role="button" href="logginn.php">Logg inn</a><a class="btn btn-secondary ms-md-2" role="button" href="registrerBruker.php">Registrer</a>
+                </ul><a class="btn btn-primary ms-md-2" role="button" href="loggInn.php">Logg inn</a><a class="btn btn-secondary ms-md-2" role="button" href="registrerBruker.php">Registrer</a>
             </div>
         </div>
     </nav>

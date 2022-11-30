@@ -30,7 +30,7 @@ require_once ('../Includes/db.inc.php')
                 </ul>
                 <a class="btn btn-secondary ms-md-2" role="button" href="#">Min profil</a>
                 <a class="btn btn-secondary ms-md-2" role="button" href="#">Ny annonse</a>
-                <a class="btn btn-primary ms-md-2" role="button" href="homepage.php">Logg ut</a>
+                <a class="btn btn-primary ms-md-2" role="button" href="loggUt.php">Logg ut</a>
 
 
             </div>

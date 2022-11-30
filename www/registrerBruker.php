@@ -14,7 +14,9 @@ $q->bindParam(':fnavn', $firstname, PDO::PARAM_STR);
 $q->bindParam(':enavn', $lastname, PDO::PARAM_STR);
 $q->bindParam(':passord', $passord, PDO::PARAM_STR);
 
+
 include_once('../Includes/VaskingAvTagger.inc.php'); // Henter vaskingAvTagger funksjonen. 
+
 
 // Hvis registrer knappen er trykket på - utfør funksjonen "vaskingAvTagger". 
 if (isset($_REQUEST['registrer'])) {
@@ -34,7 +36,7 @@ if (isset($_REQUEST['registrer'])) {
 
     //Sjekker om noe er satt inn, returnerer UID.
     if ($pdo->lastInsertId() > 0) {
-        echo "Data inserted into database, identified by BID " . $pdo->lastInsertId() . "."; // Endret på feilmelding
+        echo "Data inserted into database, identified by BID " . $pdo->lastInsertId() . "."; // NB! Husk å endre på feilmelding
     } else {
         echo "Data were not inserted into database.";
     }
