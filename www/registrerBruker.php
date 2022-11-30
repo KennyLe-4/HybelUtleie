@@ -25,7 +25,7 @@ if (isset($_REQUEST['registrer'])) {
     $lastname = vaskingAvTagger($_REQUEST['enavn']);
 	$passord = vaskingAvTagger($_REQUEST['passord']);
 	$passord = password_hash($_REQUEST['passord'], PASSWORD_DEFAULT); 
-include_once('./Includes/registrerBruker.inc.php');
+
     try {
         $q->execute();
     } catch (PDOException $e) {
