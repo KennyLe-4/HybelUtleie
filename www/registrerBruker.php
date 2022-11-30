@@ -65,7 +65,7 @@ if (isset($_REQUEST['registrer'])) {
                     <div class="text-center">
                         <h4 class="text-dark mb-4">Registrer en bruker!</h4>
                     </div>
-                    <form class="user" method="post" action="./Includes/registrerBruker.inc.php">
+                    <form class="user" method="post" action="">
 						<div class="row mb-3">
 							<div class="mb-3"><input class="form-control form-control-user" name="epost" type="email" id="email" name ="epost" placeholder="Email Adresse" required=""></div>
                             <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" name="fnavn" placeholder="Fornavn" ></div>
