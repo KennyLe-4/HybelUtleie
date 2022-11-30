@@ -12,7 +12,10 @@
     <link rel="stylesheet" href="../assets/css/Projects-Grid-images.css">
     <link rel="stylesheet" href="../assets/css/Simple-Slider-Simple-Slider.css">
 </head>
-
+<?php if(isset($_SESSION['message'])) : ?>
+    <h5 class="alert alert_success"><?= $_SESSION['message']?></h5>
+    <?php unset($_SESSION['message']);
+    endif; ?>
 <body>
     <nav class="navbar navbar-light navbar-expand-md py-3" data-aos="fade">
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-house">

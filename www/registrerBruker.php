@@ -14,7 +14,9 @@ $q->bindParam(':fnavn', $firstname, PDO::PARAM_STR);
 $q->bindParam(':enavn', $lastname, PDO::PARAM_STR);
 $q->bindParam(':passord', $passord, PDO::PARAM_STR);
 
-include_once('../Includes/vaskingAvTagger.inc.php'); // Henter vaskingAvTagger funksjonen. 
+
+include_once('../Includes/VaskingAvTagger.inc.php'); // Henter vaskingAvTagger funksjonen. 
+
 
 // Hvis registrer knappen er trykket på - utfør funksjonen "vaskingAvTagger". 
 if (isset($_REQUEST['registrer'])) {
