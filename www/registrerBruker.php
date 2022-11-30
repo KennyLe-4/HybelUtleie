@@ -15,7 +15,7 @@ $q->bindParam(':enavn', $lastname, PDO::PARAM_STR);
 $q->bindParam(':passord', $passord, PDO::PARAM_STR);
 
 
-include_once('../Includes/VaskingAvTagger.inc.php'); // Henter vaskingAvTagger funksjonen. 
+include_once('./Includes/VaskingAvTagger.inc.php'); // Henter vaskingAvTagger funksjonen. 
 
 
 // Hvis registrer knappen er trykket på - utfør funksjonen "vaskingAvTagger". 
@@ -25,11 +25,7 @@ if (isset($_REQUEST['registrer'])) {
     $lastname = vaskingAvTagger($_REQUEST['enavn']);
 	$passord = vaskingAvTagger($_REQUEST['passord']);
 	$passord = password_hash($_REQUEST['passord'], PASSWORD_DEFAULT); 
-<<<<<<< HEAD
-
-=======
 include_once('../Includes/registrerBruker.inc.php');
->>>>>>> cfd6ede (lol)
     try {
         $q->execute();
     } catch (PDOException $e) {
@@ -69,7 +65,7 @@ include_once('../Includes/registrerBruker.inc.php');
                     <div class="text-center">
                         <h4 class="text-dark mb-4">Registrer en bruker!</h4>
                     </div>
-                    <form class="user" method="post" action="../Includes/registrerBruker.inc.php">
+                    <form class="user" method="post" action="./Includes/registrerBruker.inc.php">
 						<div class="row mb-3">
 							<div class="mb-3"><input class="form-control form-control-user" name="epost" type="email" id="email" name ="epost" placeholder="Email Adresse" required=""></div>
                             <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" name="fnavn" placeholder="Fornavn" ></div>
