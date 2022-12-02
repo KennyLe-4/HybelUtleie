@@ -1,3 +1,70 @@
+<?php
+require_once('../Includes/db.inc.php');
+
+$sql = "INSERT INTO annonser 
+        (overskrift, beskrivelse, gateAdresse, pris, bilder) 
+        VALUES 
+        (:overskrift, :beskrivelse, :gateAdresse, :pris, :bilder)";
+
+$q = $pdo->prepare($sql);
+
+
+$q->bindParam(':epost', $epost, PDO::PARAM_STR);
+$q->bindParam(':fnavn', $firstname, PDO::PARAM_STR);
+$q->bindParam(':enavn', $lastname, PDO::PARAM_STR);
+$q->bindParam(':passord', $passord, PDO::PARAM_STR);
+
+
+include_once('../Includes/VaskingAvTagger.inc.php'); // Henter vaskingAvTagger funksjonen. 
+
+
+// Hvis registrer knappen er trykket på - utfør funksjonen "vaskingAvTagger". 
+if (isset($_REQUEST['registrer'])) {
+    $epost = vaskingAvTagger($_REQUEST['epost']);
+	$firstname = vaskingAvTagger($_REQUEST['fnavn']);
+    $lastname = vaskingAvTagger($_REQUEST['enavn']);
+	$passord = vaskingAvTagger($_REQUEST['passord']);
+	$passord = password_hash($_REQUEST['passord'], PASSWORD_DEFAULT); 
+
+    try {
+        $q->execute();
+    } catch (PDOException $e) {
+        echo "Error querying database: " (); //. $e->getMessage() . "<br>"; // Never do this in production
+    }
+
+    //$q->debugDumpParams();
+
+    //Sjekker om noe er satt inn, returnerer UID.
+    if ($pdo->lastInsertId() > 0) {
+        echo "Data inserted into database, identified by BID " . $pdo->lastInsertId() . "."; // NB! Husk å endre på feilmelding
+    } else {
+        echo "Data were not inserted into database.";
+    }
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,9 +98,9 @@
                                 <div class="mb-3"><input class="form-control" type="text" id="name-2" name="overskrift" placeholder="Overskrift"></div>
                                 <div class="mb-3"><input class="form-control" type="email" id="email-2" name="adresse" placeholder="Adresse"></div>
                                 <div class="mb-3"><input class="form-control" type="email" id="email-1" name="Pris" placeholder="Pris"></div>
-                                <div class="mb-3"><textarea class="form-control" id="message-2" name="message" rows="6" placeholder="Message"></textarea></div>
+                                <div class="mb-3"><textarea class="form-control" id="message-2" name="message" rows="6" placeholder="Beskrivelse"></textarea></div>
                                 <div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
   <label class="form-check-label" for="flexRadioDefault1">
     Rom i bofelleskap
   </label>
@@ -57,7 +124,7 @@
   </label>
 </div>
 <div class="mb-3"><div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
   <label class="form-check-label" for="flexRadioDefault2">
     Leilighet
   </label></div>
@@ -66,7 +133,7 @@
                                 <div class="mb-3"><label class="form-label" for="customFile">Legg til bilder </label><input type="file" class="form-control" id="customFile"/></div>
 
 
-                                <div><button class="btn btn-primary d-block w-100" type="submit">Send </button></div>
+                                <div><button class="btn btn-primary d-block w-100" name="opprettAnnonse"type="submit">Opprett annonse</button></div>
                             </form>
                         </div>
                     </div>
