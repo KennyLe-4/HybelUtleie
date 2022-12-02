@@ -1,6 +1,7 @@
 <?php
 function vaskingAvTagger($vask)
 {
+  $vask = ucfirst($vask); // Ucfirst-funksjonen gjør at den første string blir stor bokstav. 
   $vask = trim($vask); // Trim()-funksjonen fjerner mellomrom og andre forhåndsdefinerte tegn fra begge sider av en streng.
   $vask = strip_tags($vask); // Strip_tags()- funksjonen fjerner HTML, XML og PHP tags. 
   $vask = htmlentities($vask); // HTMLentites()- funksjonen konverterer alle bokstaver til HTML entities. 
