@@ -36,9 +36,15 @@ if (isset($_REQUEST['registrer'])) {
 
     //Sjekker om noe er satt inn, returnerer UID.
     if ($pdo->lastInsertId() > 0) {
-        echo "Data inserted into database, identified by BID " . $pdo->lastInsertId() . "."; // NB! Husk å endre på feilmelding
+		echo "Registrering fullført" . //$pdo->lastInsertId() . "."; // NB! Husk å endre på feilmelding
+			header('Location: logginn.php');
+		exit();
     } else {
-        echo "Data were not inserted into database.";
+        echo "Registrerigen ble <b>ikke</b> gjennomført";
+			header('Location: registrerbruker.php');
+		exit();
+
+
     }
 }
 ?>

@@ -1,5 +1,8 @@
 <?php
 // Fortsette med funksjoner i morgen
+// Laste det opp til databasen - sjekke alt stemmer
+// Laste opp bilder funksjon - koding mappen - nettside tutroial 
+// 
 require_once('../Includes/db.inc.php');
 
 $sql = "INSERT INTO annonser 
@@ -101,7 +104,7 @@ if (isset($_REQUEST['registrer'])) {
                                 <div class="mb-3"><input class="form-control" type="email" id="email-1" name="Pris" placeholder="Pris"></div>
                                 <div class="mb-3"><textarea class="form-control" id="message-2" name="message" rows="6" placeholder="Beskrivelse"></textarea></div>
                                 <div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1" checked>
+  <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
   <label class="form-check-label" for="flexRadioDefault1">
     Rom i bofelleskap
   </label>
@@ -131,7 +134,7 @@ if (isset($_REQUEST['registrer'])) {
   </label></div>
 </div>
 
-                                <div class="mb-3"><label class="form-label" for="customFile">Legg til bilder </label><input type="file" class="form-control" id="customFile"/></div>
+                                <div class="mb-3"><label class="form-label" name="file" for="customFile">Legg til bilder </label><input type="file" class="form-control" id="customFile"/></div>
 
 
                                 <div><button class="btn btn-primary d-block w-100" name="opprettAnnonse"type="submit">Opprett annonse</button></div>
