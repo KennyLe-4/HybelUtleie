@@ -31,10 +31,10 @@ if (isset($_POST['logginn'])) {
 
             header("Location: hjemmeside.php"); // Liten test på hvordan det kan se ut. 
         } else {
-            echo "Feil passord";
+            echo "Feil brukernavn eller passord";
         }
     } else {
-        echo "Feil brukernavn";
+        echo "Feil brukernavn eller passord";
     }
 }
 
