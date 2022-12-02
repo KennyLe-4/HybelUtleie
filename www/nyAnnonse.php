@@ -1,10 +1,11 @@
 <?php
+// Fortsette med funksjoner i morgen
 require_once('../Includes/db.inc.php');
 
 $sql = "INSERT INTO annonser 
-        (overskrift, beskrivelse, gateAdresse, pris, bilder) 
+        (overskrift, beskrivelse, gateAdresse, pris) 
         VALUES 
-        (:overskrift, :beskrivelse, :gateAdresse, :pris, :bilder)";
+        (:overskrift, :beskrivelse, :gateAdresse, :pris)";
 
 $q = $pdo->prepare($sql);
 
@@ -100,31 +101,31 @@ if (isset($_REQUEST['registrer'])) {
                                 <div class="mb-3"><input class="form-control" type="email" id="email-1" name="Pris" placeholder="Pris"></div>
                                 <div class="mb-3"><textarea class="form-control" id="message-2" name="message" rows="6" placeholder="Beskrivelse"></textarea></div>
                                 <div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+  <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1" checked>
   <label class="form-check-label" for="flexRadioDefault1">
     Rom i bofelleskap
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+  <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1">
   <label class="form-check-label" for="flexRadioDefault1">
    Rom i leilighet
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+  <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault1">
   <label class="form-check-label" for="flexRadioDefault1">
    Hybel
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+  <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault1">
   <label class="form-check-label" for="flexRadioDefault1">
     Hus
   </label>
 </div>
 <div class="mb-3"><div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+  <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault2">
   <label class="form-check-label" for="flexRadioDefault2">
     Leilighet
   </label></div>
