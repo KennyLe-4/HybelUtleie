@@ -6,37 +6,40 @@
 require_once('../Includes/db.inc.php');
 
 $sql = "INSERT INTO annonser 
-        (overskrift, beskrivelse, gateAdresse, pris) 
+        (overskrift, beskrivelse, gateAdresse, pris, boligType) 
         VALUES 
-        (:overskrift, :beskrivelse, :gateAdresse, :pris)";
+        (:overskrift, :beskrivelse, :gateAdresse, :pris, :boligType)";
 
 $q = $pdo->prepare($sql);
 
 
-$q->bindParam(':epost', $epost, PDO::PARAM_STR);
-$q->bindParam(':fnavn', $firstname, PDO::PARAM_STR);
-$q->bindParam(':enavn', $lastname, PDO::PARAM_STR);
-$q->bindParam(':passord', $passord, PDO::PARAM_STR);
+$q->bindParam(':overskrift', $overskrift, PDO::PARAM_STR);
+$q->bindParam(':beskrivelse', $beskrivelse, PDO::PARAM_STR);
+$q->bindParam(':gateAdresse', $gateAdresse, PDO::PARAM_STR);
+$q->bindParam(':pris', $pris, PDO::PARAM_STR);
+$q->bindParam(':boligType', $flexRadioDefault, PDO::PARAM_BOOL);
 
 
-include_once('../Includes/VaskingAvTagger.inc.php'); // Henter vaskingAvTagger funksjonen. 
 
+//include_once('../Includes/VaskingAvTagger.inc.php');
 
 // Hvis registrer knappen er trykket på - utfør funksjonen "vaskingAvTagger". 
-if (isset($_REQUEST['registrer'])) {
-    $epost = vaskingAvTagger($_REQUEST['epost']);
-	$firstname = vaskingAvTagger($_REQUEST['fnavn']);
-    $lastname = vaskingAvTagger($_REQUEST['enavn']);
-	$passord = vaskingAvTagger($_REQUEST['passord']);
-	$passord = password_hash($_REQUEST['passord'], PASSWORD_DEFAULT); 
+if (isset($_REQUEST['opprettAnnonse'])) {
+    $overskrift = $_REQUEST['overskrift'];
+    $beskrivelse = $_REQUEST['beskrivelse'];
+    $gateAdresse = $_REQUEST['gateAdresse'];
+    $pris = $_REQUEST['pris'];
+    $boligType = $_REQUEST['flexRadioDefault'];
+
 
     try {
         $q->execute();
     } catch (PDOException $e) {
-        echo "Error querying database: " (); //. $e->getMessage() . "<br>"; // Never do this in production
+        echo "Error querying database: "();
+        $e->getMessage() . "<br>"; // Never do this in production
     }
 
-    //$q->debugDumpParams();
+    $q->debugDumpParams();
 
     //Sjekker om noe er satt inn, returnerer UID.
     if ($pdo->lastInsertId() > 0) {
@@ -46,24 +49,6 @@ if (isset($_REQUEST['registrer'])) {
     }
 }
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -99,45 +84,60 @@ if (isset($_REQUEST['registrer'])) {
                         <div class="card-body p-sm-5">
                             <h2 class="text-center mb-4">Ny annonse</h2>
                             <form method="post">
-                                <div class="mb-3"><input class="form-control" type="text" id="name-2" name="overskrift" placeholder="Overskrift"></div>
-                                <div class="mb-3"><input class="form-control" type="email" id="email-2" name="adresse" placeholder="Adresse"></div>
-                                <div class="mb-3"><input class="form-control" type="email" id="email-1" name="Pris" placeholder="Pris"></div>
-                                <div class="mb-3"><textarea class="form-control" id="message-2" name="message" rows="6" placeholder="Beskrivelse"></textarea></div>
-                                <div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
-  <label class="form-check-label" for="flexRadioDefault1">
-    Rom i bofelleskap
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1">
-  <label class="form-check-label" for="flexRadioDefault1">
-   Rom i leilighet
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault1">
-  <label class="form-check-label" for="flexRadioDefault1">
-   Hybel
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault4" id="flexRadioDefault1">
-  <label class="form-check-label" for="flexRadioDefault1">
-    Hus
-  </label>
-</div>
-<div class="mb-3"><div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault5" id="flexRadioDefault2">
-  <label class="form-check-label" for="flexRadioDefault2">
-    Leilighet
-  </label></div>
-</div>
+                                <div class="mb-3"><input class="form-control" type="text" id="name-1" name="overskrift" placeholder="Overskrift"></div>
 
-                                <div class="mb-3"><label class="form-label" name="file" for="customFile">Legg til bilder </label><input type="file" class="form-control" id="customFile"/></div>
+                                <div class="mb-3"><input class="form-control" type="text" id="email-1" name="gateAdresse" placeholder="Adresse"></div>
 
+                                <div class="mb-3"><input class="form-control" type="number" id="email-1" name="pris" placeholder="Pris"></div>
 
-                                <div><button class="btn btn-primary d-block w-100" name="opprettAnnonse"type="submit">Opprett annonse</button></div>
+                                <div class="mb-3"><textarea class="form-control" id="message-2" name="beskrivelse" rows="6" placeholder="Beskrivelse"></textarea></div>
+                                <!-- De ulike knappene for type hus  -->
+                                <label>Hva slags type bolig skal du leie ut<label><br>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                Rom i bofellesskap
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                Rom i bofellesskap
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                Rom i leilighet
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                Leilighet
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                Hus
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                Hybel
+                                            </label>
+                                        </div><br>
+                                        <!-- Legg til fil -->
+                                        <div class="mb-3"><label class="form-label" name="bilder" for="customFile">Legg til bilder </label><input type="file" class="form-control" id="customFile" /></div><br>
+                                        <div><button class="btn btn-primary d-block w-100" name="opprettAnnonse" type="submit">Opprett annonse</button></div>
                             </form>
                         </div>
                     </div>
