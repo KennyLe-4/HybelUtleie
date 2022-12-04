@@ -64,6 +64,21 @@ if (isset($_REQUEST['registrer'])) {
 </head>
 
 <body>
+
+<?php
+
+if(isset($_SESSION['meldinger']))
+    {
+        ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Bra jobbet!</strong> <?= $_SESSION['meldinger']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php 
+        unset($_SESSION['meldinger']);
+    } 
+
+?>
 	
     <div class="container" style="position:absolute; left:0; right:0; top: 50%; transform: translateY(-50%); -ms-transform: translateY(-50%); -moz-transform: translateY(-50%); -webkit-transform: translateY(-50%); -o-transform: translateY(-50%);">
         <div class="row d-flex d-xl-flex justify-content-center justify-content-xl-center">
