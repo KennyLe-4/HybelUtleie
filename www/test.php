@@ -1,34 +1,34 @@
 <?php
-require_once('../Includes/db.nyAnnonse.inc.php');
+require_once('../Includes/db.inc.php');
 
 
-$query = "INSERT INTO annonser (overskrift, beskrivelse, gateAdresse, pris, depositum, bofelleskap, boligEtasje, antallRom, status, bilde) 
+$sql = "INSERT INTO annonser (overskrift, beskrivelse, gateAdresse, pris, depositum, bofelleskap, boligEtasje, antallRom, status) 
 VALUES 
-(:overskrift, :beskrivelse, :gateAdresse, :pris, :depositum, :bofelleskap, :boligEtasje, :antallRom, :status, :bilde)";
+(:overskrift, :beskrivelse, :gateAdresse, :pris, :depositum, :bofelleskap, :boligEtasje, :antallRom, :status)"; 
         
-$statement = $conn->prepare($query); 
+$q = $pdo->prepare($sql); 
 
-        $statement->bindParam(':overskrift', $overskrift, PDO::PARAM_STR); /* Bind variabler til plassholdere */
-        $statement->bindParam(':beskrivelse', $beskrivelse,PDO::PARAM_STR);
-        $statement->bindParam(':gateAdresse', $gateAdresse, PDO::PARAM_STR);
-        $statement->bindParam(':pris', $pris, PDO::PARAM_INT);
-        $statement->bindParam(':depositum', $depositum, PDO::PARAM_STR);
-        $statement->bindParam(':boligType', $boligType, PDO::PARAM_STR);
-        $statement->bindParam(':boligEtasje', $boligEtasje, PDO::PARAM_INT);
-        $statement->bindParam(':antallRom', $antallRom, PDO::PARAM_INT);
-        $statement->bindParam(':status', $status, PDO::PARAM_BOOL);
-        $statement->bindParam(':bilde', $bilde, PDO::PARAM_STR);
+        $q->bindParam(':overskrift', $overskrift, PDO::PARAM_STR); /* Bind variabler til plassholdere */
+        $q->bindParam(':beskrivelse', $beskrivelse,PDO::PARAM_STR);
+        $q->bindParam(':gateAdresse', $gateAdresse, PDO::PARAM_STR);
+        $q->bindParam(':pris', $pris, PDO::PARAM_INT);
+        $q->bindParam(':depositum', $depositum, PDO::PARAM_STR);
+        $q->bindParam(':boligType', $boligType, PDO::PARAM_STR);
+        $q->bindParam(':boligEtasje', $boligEtasje, PDO::PARAM_INT);
+        $q->bindParam(':antallRom', $antallRom, PDO::PARAM_INT);
+        $q->bindParam(':status', $status, PDO::PARAM_BOOL);
+        $q->bindParam(':bilde', $bilde, PDO::PARAM_STR);
 
 
 if (isset($_REQUEST['opprettAnnonse'])) {
-    $overskrift = $_REQUEST['overskrift'];
-    $beskrivelse = $_REQUEST['beskrivelse'];
-    $gateAdresse = $_REQUEST['gateAdresse'];
-    $pris = $_REQUEST['pris'];
-    $depositum = $_REQUEST['depositum'];
-    $boligType = $_REQUEST['boligType'];
-    $boligEtasje = $_REQUEST['boligEtasje'];
-    $antallRom = $_REQUEST['antallRom'];
+    $overskrift = $_POST['overskrift'];
+    $beskrivelse = $_POST['beskrivelse'];
+    $gateAdresse = $_POST['gateAdresse'];
+    $pris = $_POST['pris'];
+    $depositum = $_POST['depositum'];
+    $boligType = $_POST['boligType'];
+    $boligEtasje = $_POST['boligEtasje'];
+    $antallRom = $_POST['antallRom'];
     $status = 1;
 
     if (is_uploaded_file($_FILES['upload-file']['tmp_name'])) {
@@ -42,7 +42,7 @@ if (isset($_REQUEST['opprettAnnonse'])) {
             "png" => "image/png"
         );
         $max_file_size = 2000000; // i bytes
-        $dir = $_SERVER['DOCUMENT_ROOT'] . "assets/bilder";
+        $dir = $_SERVER['DOCUMENT_ROOT'] . "/HybelUtleie/assets/bilder/";
 
         // Mekker katalog, hvis den ikke allerede finnes
         if (!file_exists($dir)) {
@@ -81,7 +81,6 @@ if (isset($_REQUEST['opprettAnnonse'])) {
         $messages['error'][] = "No file is selected";
     }
 
-    
 
     //Brukes for å sette bildepath i databasen
     $bilde = $filename;
@@ -89,31 +88,25 @@ if (isset($_REQUEST['opprettAnnonse'])) {
     //Henter eier fra innlogget bruker
     $eier = $_SESSION["brukerID"];
 
-  
-
     try {
-        $statement->execute();
+        $q->execute();
     } catch (PDOException $e) {
         echo "Error querying database: " . $e->getMessage() . "<br>"; // Never do this in production
     }
     //$q->debugDumpParams();
 
     //Sjekker om noe er satt inn, returnerer UID. I dette tilfelle, redirecter til hjem.php
-    if ($conn->lastInsertId() > 0) {
-        $_SESSION['meldinger'] = "Din annonse er lagt til";
-            header('Location: hjemmeside.php'); // blir sendt tilbake til hjemmesiden med suksessfull melding 
+    if ($pdo->lastInsertId() > 0) {
+            $_SESSION['meldinger'] = "Din annonse er lagt til";
+            header('Location: test.php'); // blir sendt tilbake til hjemmesiden med suksessfull melding 
             
     } else {
 
         $_SESSION['feilmeldinger'] = "Det var en feil med din opplastning";
-        header('Location: hjemmeside.php'); // blir sendt tilbkae til hjemmesiden
+        header('Location: test.php'); // blir værende, men får feilkode
         
     }
 }
-
-
-
-
 
 
 
@@ -172,7 +165,7 @@ if(isset($_SESSION['feilmeldinger']))
                     <div class="card mb-5">
                         <div class="card-body p-sm-5">
                             <h2 class="text-center mb-4">Ny annonse</h2>
-                            <form method="post">
+                            <form method="post" enctype="multipart/form-data" >
                           
                                 <div class="mb-3"><input class="form-control" type="text" id="name-1" name="overskrift" placeholder="Overskrift"></div> 
 
@@ -215,10 +208,10 @@ if(isset($_SESSION['feilmeldinger']))
                                                 <option value="4">4</option>
                                                 <option value="Annet">Annet</option>
                                             </select><br>
-                                        <!-- Legg til fil
+                                       
                                     
-                                      <div class="mb-3"><label class="form-label" name="upload-file'" for="customFile">Legg til bilder </label><input type="file" class="form-control" id="customFile" /></div><br> -->
-                                      <input name="upload-file" type="file" required> </h2>
+                                      <!-- <div class="mb-3"><label class="form-label" name="upload-file'" for="customFile">Legg til bilder </label><input type="file" class="form-control" id="customFile" /></div><br>  -->
+                                      <input name="upload-file" type="file"></h2>
 
 
                         
