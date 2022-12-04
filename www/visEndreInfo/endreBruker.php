@@ -21,11 +21,13 @@ require_once ('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc
         <div class="card-header">
             <h3>Ender og oppdater bruker
                 <a href="./hjemmeside.php" class="btn btn-danger float-end">Hjem</a>
+                <?php //hjem knapp hvis brukeren skal til hjemmeside?>
                 </h3>
         </div>
     <div class="card-body">
 <?php
 if(isset($_GET['id'])){
+    //henter brukerID ved id der det ble definert på forrige side
 $bruker_id = $_GET['id'];
 $query = "SELECT * FROM bruker where brukerID=:bruker_id";
 $statement = $pdo->prepare($query);
@@ -43,6 +45,7 @@ $result = $statement->fetch(PDO::FETCH_OBJ);
 
     <input type="hidden" name="bruker_id" value="<?= $result->brukerID ?>" >
         <div class="mb-3">
+            <?php //skuler bruker id der brukeren skal ikke endre det ?>
             <label>Fornavn</label>
             <input type="text" name="fnavn" value="<?= $result->fnavn ?>" class="form-control" />
         </div>
@@ -55,12 +58,13 @@ $result = $statement->fetch(PDO::FETCH_OBJ);
             <input type="email" name="epost" value="<?= $result->epost ?>" class="form-control" />
         </div>
         <div class="mb-3">
-            <label>Passord</label>
-            <input type="text" name="passord" value="<?= $result->passord ?>" class="form-control" />
+            <label>Nytt Passord</label>
+            <input type="password" name="passord" value="" class="form-control" />
         </div>
         <div class="mb-3">
            <button type="submit" name="lagreEndringer" class="btn btn-primary">Lagre Endringene</button>
         </div>
+        <?php //viser fram dataen som brukeren har i en tabbell hvor brukeren kan og redigere det bruker input ?>
 
 
 
