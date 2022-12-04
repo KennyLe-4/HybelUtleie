@@ -1,58 +1,43 @@
 <?php
-// Fortsette med funksjoner i morgen
-// Laste det opp til databasen - sjekke alt stemmer
-// Laste opp bilder funksjon - koding mappen - nettside tutroial 
-// 
-require_once('../Includes/db.inc.php');
-
-$sql = "INSERT INTO annonser 
-        (overskrift, beskrivelse, gateAdresse, pris, boligType) 
-        VALUES 
-        (:overskrift, :beskrivelse, :gateAdresse, :pris, :boligType)";
-
-$q = $pdo->prepare($sql);
-
-
-$q->bindParam(':overskrift', $overskrift, PDO::PARAM_STR);
-$q->bindParam(':beskrivelse', $beskrivelse, PDO::PARAM_STR);
-$q->bindParam(':gateAdresse', $gateAdresse, PDO::PARAM_STR);
-$q->bindParam(':pris', $pris, PDO::PARAM_STR);
-$q->bindParam(':boligType', $flexRadioDefault, PDO::PARAM_BOOL);
-
-
-
-//include_once('../Includes/VaskingAvTagger.inc.php');
-
-// Hvis registrer knappen er trykket på - utfør funksjonen "vaskingAvTagger". 
-if (isset($_REQUEST['opprettAnnonse'])) {
-    $overskrift = $_REQUEST['overskrift'];
-    $beskrivelse = $_REQUEST['beskrivelse'];
-    $gateAdresse = $_REQUEST['gateAdresse'];
-    $pris = $_REQUEST['pris'];
-    $boligType = $_REQUEST['flexRadioDefault'];
+require_once('../Includes/db.nyAnnonse.inc.php');
+if (isset($_POST['opprettAnnonse'])) {
+    $overskrift = $_POST['overskrift'];
+    $beskrivelse = $_POST['beskrivelse'];
+    $gateAdresse = $_POST['gateAdresse'];
+    $pris = $_POST['pris'];
+    $boligType = $_POST['boligType'];
 
 
     try {
-        $q->execute();
+
+        $query = "INSERT INTO annonser (overskrift, beskrivelse, gateAdresse, pris, bofelleskap) VALUES (?, ?, ?, ?, ?)";
+        $statement = $conn->prepare($query);
+        $statement->bindParam(1, $overskrift);
+        $statement->bindParam(2, $beskrivelse);
+        $statement->bindParam(3, $gateAdresse);
+        $statement->bindParam(4, $pris);
+        $statement->bindParam(5, $boligType);
+
+        $query_execute = $statement->execute();     
+          
+        if ($query_execute)  {
+            $_SESSION['meldinger'] = "Din annonse er lagt til";
+            header('Location: hjemmeside.php'); // blir sendt tilbake til hjemmesiden med suksessfull melding 
+            
+
+        } else {
+
+            $_SESSION['feilmeldinger'] = "Det var en feil med din opplastning";
+            header('Location: nyAnnonse.php'); // blir sendt tilbkae til hjemmesiden
+            
+        }
     } catch (PDOException $e) {
-        echo "Error querying database: "();
-        $e->getMessage() . "<br>"; // Never do this in production
-    }
 
-    $q->debugDumpParams();
-
-    //Sjekker om noe er satt inn, returnerer UID.
-    if ($pdo->lastInsertId() > 0) {
-        echo "Data inserted into database, identified by BID " . $pdo->lastInsertId() . "."; // NB! Husk å endre på feilmelding
-    } else {
-        echo "Data were not inserted into database.";
+        echo "Registreringen ble ikke fullført. Prøv igjen og husk å fylle ut alle feltene. <br>"; //. $e->getMessage();
     }
 }
+
 ?>
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,6 +52,18 @@ if (isset($_REQUEST['opprettAnnonse'])) {
     <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
     <link rel="stylesheet" href="assets/css/Simple-Slider-Simple-Slider.css">
 </head>
+<?php 
+    
+    if(isset($_SESSION['feilmeldinger']))
+    {
+        ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Bra jobbet!</strong> <?= $_SESSION['feilmeldinger']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php 
+        unset($_SESSION['feilmeldinger']);
+    } ?>
 
 <body>
     <div class="simple-slider">
@@ -91,50 +88,21 @@ if (isset($_REQUEST['opprettAnnonse'])) {
                                 <div class="mb-3"><input class="form-control" type="number" id="email-1" name="pris" placeholder="Pris"></div>
 
                                 <div class="mb-3"><textarea class="form-control" id="message-2" name="beskrivelse" rows="6" placeholder="Beskrivelse"></textarea></div>
-                                <!-- De ulike knappene for type hus  -->
-                                <label>Hva slags type bolig skal du leie ut<label><br>
 
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                Rom i bofellesskap
-                                            </label>
-                                        </div>
+                                <!-- De ulike knappene for type bolig  -->
+                                <label>Hva slags type bolig skal du leie ut<label><b>
 
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                Rom i bofellesskap
-                                            </label>
-                                        </div>
+                                            <select class="form-select" name="boligType" aria-label="Default select example">
+                                                <option selected>Åpne denne menyen</option>
+                                                <option value="Bofelleskap">Rom i bofelleskap</option>
+                                                <option value="Rom i leilighet">Rom i leilighet</option>
+                                                <option value="Hybel">Hybel</option>
+                                                <option value="Leilighet">Leilighet</option>
+                                                <option value="Hus">Hus</option>
+                                            </select><br>
 
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                Rom i leilighet
-                                            </label>
-                                        </div>
 
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                Leilighet
-                                            </label>
-                                        </div>
 
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                Hus
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                Hybel
-                                            </label>
-                                        </div><br>
                                         <!-- Legg til fil -->
                                         <div class="mb-3"><label class="form-label" name="bilder" for="customFile">Legg til bilder </label><input type="file" class="form-control" id="customFile" /></div><br>
                                         <div><button class="btn btn-primary d-block w-100" name="opprettAnnonse" type="submit">Opprett annonse</button></div>
