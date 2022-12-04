@@ -19,7 +19,7 @@ require_once ('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc
 
     <div class="card">
         <div class="card-header">
-            <h3>Ender og oppdater bruker
+            <h3>Endre og oppdater bruker
                 <a href="./hjemmeside.php" class="btn btn-danger float-end">Hjem</a>
                 <?php //hjem knapp hvis brukeren skal til hjemmeside?>
                 </h3>

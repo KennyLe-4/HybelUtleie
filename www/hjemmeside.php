@@ -50,7 +50,7 @@ require_once ('../Includes/db.inc.php');
                 <div class="py-4">
                     <div class="carousel slide" data-bs-ride="false" id="carousel-6">
                         <div class="carousel-inner">
-                            <div class="carousel-item active"><img class="w-100 d-block" src="../assets/img/studio.jpg" alt="Slide Image"></div>
+                            <div class="carousel-item active"><img class="w-100 d-block" src="../assets/bilder/studio.jpg" alt="Slide Image"></div>
                             <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                             <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                         </div>
@@ -70,7 +70,7 @@ require_once ('../Includes/db.inc.php');
                     <div class="py-4">
                         <div class="carousel slide" data-bs-ride="false" id="carousel-4">
                             <div class="carousel-inner">
-                                <div class="carousel-item active"><img class="w-100 d-block" src="../assets/img/studio.jpg" alt="Slide Image"></div>
+                                <div class="carousel-item active"><img class="w-100 d-block" src="../assets/bilder/studio.jpg" alt="Slide Image"></div>
                                 <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                                 <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                             </div>
@@ -91,7 +91,7 @@ require_once ('../Includes/db.inc.php');
                     <div class="py-4">
                         <div class="carousel slide" data-bs-ride="false" id="carousel-2">
                             <div class="carousel-inner">
-                                <div class="carousel-item active"><img class="w-100 d-block" src="../assets/img/studio.jpg" alt="Slide Image"></div>
+                                <div class="carousel-item active"><img class="w-100 d-block" src="../assets/bilder/studio.jpg" alt="Slide Image"></div>
                                 <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                                 <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                             </div>
@@ -112,7 +112,7 @@ require_once ('../Includes/db.inc.php');
                     <div class="py-4">
                         <div class="carousel slide" data-bs-ride="false" id="carousel-5">
                             <div class="carousel-inner">
-                                <div class="carousel-item active"><img class="w-100 d-block" src="../assets/img/studio.jpg" alt="Slide Image"></div>
+                                <div class="carousel-item active"><img class="w-100 d-block" src="../assets/bilder/studio.jpg" alt="Slide Image"></div>
                                 <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                                 <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                             </div>
@@ -132,7 +132,7 @@ require_once ('../Includes/db.inc.php');
                 <div class="py-4">
                     <div class="carousel slide" data-bs-ride="false" id="carousel-7">
                         <div class="carousel-inner">
-                            <div class="carousel-item active"><img class="w-100 d-block" src="../assets/img/studio.jpg" alt="Slide Image"></div>
+                            <div class="carousel-item active"><img class="w-100 d-block" src="../assets/bilder/studio.jpg" alt="Slide Image"></div>
                             <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                             <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                         </div>
@@ -151,7 +151,7 @@ require_once ('../Includes/db.inc.php');
                 <div class="py-4">
                     <div class="carousel slide" data-bs-ride="false" id="carousel-3">
                         <div class="carousel-inner">
-                            <div class="carousel-item active"><img class="w-100 d-block" src="../assets/img/studio.jpg" alt="Slide Image"></div>
+                            <div class="carousel-item active"><img class="w-100 d-block" src="../assets/bilder/studio.jpg" alt="Slide Image"></div>
                             <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                             <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                         </div>
