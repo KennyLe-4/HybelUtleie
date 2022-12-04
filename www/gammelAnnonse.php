@@ -1,26 +1,6 @@
 <?php
-require_once('../Includes/db.inc.php');
-
-
-$sql = "INSERT INTO annonser (overskrift, beskrivelse, gateAdresse, pris, depositum, bofelleskap, boligEtasje, antallRom, status) 
-VALUES 
-(:overskrift, :beskrivelse, :gateAdresse, :pris, :depositum, :bofelleskap, :boligEtasje, :antallRom, :status)"; 
-        
-$q = $pdo->prepare($sql); 
-
-        $q->bindParam(':overskrift', $overskrift, PDO::PARAM_STR); /* Bind variabler til plassholdere */
-        $q->bindParam(':beskrivelse', $beskrivelse,PDO::PARAM_STR);
-        $q->bindParam(':gateAdresse', $gateAdresse, PDO::PARAM_STR);
-        $q->bindParam(':pris', $pris, PDO::PARAM_INT);
-        $q->bindParam(':depositum', $depositum, PDO::PARAM_STR);
-        $q->bindParam(':boligType', $boligType, PDO::PARAM_STR);
-        $q->bindParam(':boligEtasje', $boligEtasje, PDO::PARAM_INT);
-        $q->bindParam(':antallRom', $antallRom, PDO::PARAM_INT);
-        $q->bindParam(':status', $status, PDO::PARAM_BOOL);
-        $q->bindParam(':bilde', $bilde, PDO::PARAM_STR);
-
-
-if (isset($_REQUEST['opprettAnnonse'])) {
+require_once('../Includes/db.nyAnnonse.inc.php');
+if (isset($_POST['opprettAnnonse'])) {
     $overskrift = $_POST['overskrift'];
     $beskrivelse = $_POST['beskrivelse'];
     $gateAdresse = $_POST['gateAdresse'];
@@ -31,84 +11,39 @@ if (isset($_REQUEST['opprettAnnonse'])) {
     $antallRom = $_POST['antallRom'];
     $status = 1;
 
-    if (is_uploaded_file($_FILES['upload-file']['tmp_name'])) {
-        // Henter informasjon om filen som er sendt
-        $file_type = $_FILES['upload-file']['type'];
-        $file_size = $_FILES['upload-file']['size'];
-
-        $acc_file_types = array(
-            "jpeg" => "image/jpeg",
-            "jpg" => "image/jpg",
-            "png" => "image/png"
-        );
-        $max_file_size = 2000000; // i bytes
-        $dir = $_SERVER['DOCUMENT_ROOT'] . "/HybelUtleie/assets/bilder/";
-
-        // Mekker katalog, hvis den ikke allerede finnes
-        if (!file_exists($dir)) {
-            if (!mkdir($dir, 0777, true))
-                die("Cannot create directory..." . $dir);
-        }
-
-        // Sjekker hvilke filtype det er, gir dette til variablene, som brukes i navngenerering
-        $suffix = array_search($_FILES['upload-file']['type'], $acc_file_types);
-
-        // mekker navnet på filen, ved hjelp av ønskelig input + filtype
-        do {
-            $filename  = substr(md5(date('YmdHis')), 0, 5) . '.' . $suffix;
-        } while (file_exists($dir . $filename));
-
-        /* Errors? */
-        if (!in_array($file_type, $acc_file_types)) {
-            $types = implode(", ", array_keys($acc_file_types));
-            $messages['error'][] = "Invalid file type (only <em>" . $types . "</em> are accepted)";
-        }
-        if ($file_size > $max_file_size)
-            $messages['error'][] = "The file size (" . round($file_size / 1048576, 2) . " MB) exceeds max file size (" . round($max_file_size / 1048576, 2) . " MB)"; // Bin. conversion
-
-        // Hvis alt går etter planen
-        if (empty($messages)) {
-            //Bestemmer hvor filen skal plasseres, og laster den opp. 
-            $filepath = $dir . $filename;
-            $uploaded_file = move_uploaded_file($_FILES['upload-file']['tmp_name'], $filepath);
-
-            if (!$uploaded_file)
-                $messages['error'][] = "The file could not be uploaded";
-            else
-                $messages['success'][] = "The file was uploaded and can be found here: <strong>" . $filepath . "</strong>";
-        }
-    } else {
-        $messages['error'][] = "No file is selected";
-    }
-
-
-    //Brukes for å sette bildepath i databasen
-    $bilde = $filename;
-
-    //Henter eier fra innlogget bruker
-    $eier = $_SESSION["brukerID"];
 
     try {
-        $q->execute();
-    } catch (PDOException $e) {
-        echo "Error querying database: " . $e->getMessage() . "<br>"; // Never do this in production
-    }
-    //$q->debugDumpParams();
 
-    //Sjekker om noe er satt inn, returnerer UID. I dette tilfelle, redirecter til hjem.php
-    if ($pdo->lastInsertId() > 0) {
+        $query = "INSERT INTO annonser (overskrift, beskrivelse, gateAdresse, pris, depositum, bofelleskap, boligEtasje, antallRom, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $statement = $conn->prepare($query);
+        $statement->bindParam(1, $overskrift); /* Bind variabler til plassholdere */
+        $statement->bindParam(2, $beskrivelse);
+        $statement->bindParam(3, $gateAdresse);
+        $statement->bindParam(4, $pris);
+        $statement->bindParam(5, $depositum);
+        $statement->bindParam(6, $boligType);
+        $statement->bindParam(7, $boligEtasje);
+        $statement->bindParam(8, $antallRom);
+        $statement->bindParam(9, $status);
+
+        $query_execute = $statement->execute(); // Executer spørringen(?)
+          
+        if ($query_execute)  {
             $_SESSION['meldinger'] = "Din annonse er lagt til";
             header('Location: hjemmeside.php'); // blir sendt tilbake til hjemmesiden med suksessfull melding 
             
-    } else {
 
-        $_SESSION['feilmeldinger'] = "Det var en feil med din opplastning";
-        header('Location: hjemmeside.php'); // blir værende, men får feilkode
-        
+        } else {
+
+            $_SESSION['feilmeldinger'] = "Det var en feil med din opplastning";
+            header('Location: nyAnnonse.php'); // blir sendt tilbkae til hjemmesiden
+            
+        }
+    } catch (PDOException $e) {
+
+        echo "Registreringen ble ikke fullført. Prøv igjen og husk å fylle ut alle feltene. <br>" . $e->getMessage();
     }
 }
-
-
 
 ?>
 
@@ -165,7 +100,7 @@ if(isset($_SESSION['feilmeldinger']))
                     <div class="card mb-5">
                         <div class="card-body p-sm-5">
                             <h2 class="text-center mb-4">Ny annonse</h2>
-                            <form method="post" enctype="multipart/form-data" >
+                            <form method="post">
                           
                                 <div class="mb-3"><input class="form-control" type="text" id="name-1" name="overskrift" placeholder="Overskrift"></div> 
 
@@ -208,15 +143,14 @@ if(isset($_SESSION['feilmeldinger']))
                                                 <option value="4">4</option>
                                                 <option value="Annet">Annet</option>
                                             </select><br>
-                                       
-                                    
-                                      <!-- <div class="mb-3"><label class="form-label" name="upload-file'" for="customFile">Legg til bilder </label><input type="file" class="form-control" id="customFile" /></div><br>  -->
-                                      <input name="upload-file" type="file"></h2>
+
+                                         
 
 
-                        
-                            
-                                      
+
+
+                                        <!-- Legg til fil -->
+                                        <div class="mb-3"><label class="form-label" name="upload-file" for="customFile">Legg til bilder </label><input type="file" class="form-control" id="customFile" /></div><br> 
                                         <div><button class="btn btn-primary d-block w-100" name="opprettAnnonse" type="submit">Opprett annonse</button></div>
                             </form>
                         </div>
