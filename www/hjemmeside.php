@@ -50,10 +50,19 @@ require_once ('../Includes/db.inc.php');
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php 
-        unset($_SESSION['meldinger']);
-    } 
+        unset($_SESSION['feilmeldinger']);
+    } else {
+        ?> <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Bra jobbet!</strong> <?= $_SESSION['feilmeldinger']; ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php 
+        unset($_SESSION['feilmeldinger']);
+    }
 
 ?>
+
+
                 <h2>Heading</h2>
                 <p class="w-lg-50">Curae hendrerit donec commodo hendrerit egestas tempus, turpis facilisis nostra nunc. Vestibulum dui eget ultrices.</p>
             </div>
