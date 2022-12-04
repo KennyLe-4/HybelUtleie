@@ -98,12 +98,12 @@ if (isset($_REQUEST['opprettAnnonse'])) {
     //Sjekker om noe er satt inn, returnerer UID. I dette tilfelle, redirecter til hjem.php
     if ($pdo->lastInsertId() > 0) {
             $_SESSION['meldinger'] = "Din annonse er lagt til";
-            header('Location: test.php'); // blir sendt tilbake til hjemmesiden med suksessfull melding 
+            header('Location: hjemmeside.php'); // blir sendt tilbake til hjemmesiden med suksessfull melding 
             
     } else {
 
         $_SESSION['feilmeldinger'] = "Det var en feil med din opplastning";
-        header('Location: test.php'); // blir værende, men får feilkode
+        header('Location: hjemmeside.php'); // blir værende, men får feilkode
         
     }
 }
