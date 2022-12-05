@@ -90,7 +90,6 @@ if (isset($_REQUEST['opprettAnnonse'])) {
 
     //Henter eier fra innlogget bruker
     $eier = $_SESSION["brukerID"];
-    
     try {
         $q->execute();
     } catch (PDOException $e) {
@@ -176,32 +175,30 @@ if (isset($_REQUEST['opprettAnnonse'])) {
                             <h2 class="text-center mb-4">Ny annonse</h2>
                             <form method="post" enctype="multipart/form-data" >
                           
-                                <div class="mb-3"><input class="form-control" type="text" id="name-1" name="overskrift" placeholder="Overskrift" required></div> 
+                                <div class="mb-3"><input class="form-control" type="text" id="name-1" name="overskrift" placeholder="Overskrift"></div> 
 
-                                <div class="mb-3"><input class="form-control" type="text" id="email-1" name="gateAdresse" placeholder="Adresse" required></div>
+                                <div class="mb-3"><input class="form-control" type="text" id="email-1" name="gateAdresse" placeholder="Adresse"></div>
 
-                                <div class="mb-3"><input class="form-control" type="number" id="email-1" name="pris" placeholder="Pris" required></div>
+                                <div class="mb-3"><input class="form-control" type="number" id="email-1" name="pris" placeholder="Pris"></div>
 
-                                <div class="mb-3"><input class="form-control" type="number" id="email-1" name="depositum" placeholder="Depositum" required></div>
+                                <div class="mb-3"><input class="form-control" type="number" id="email-1" name="depositum" placeholder="Depositum"></div>
 
 
-                                <div class="mb-3"><textarea class="form-control" id="message-2" name="beskrivelse" rows="6" placeholder="Beskrivelse" required></textarea></div>
+                                <div class="mb-3"><textarea class="form-control" id="message-2" name="beskrivelse" rows="6" placeholder="Beskrivelse"></textarea></div>
 
                                 <!-- De ulike knappene for type bolig  -->
                                             <label>Hva slags type bolig skal du leie ut<label>
-                                            <select class="form-select" name="boligType" aria-label="Default select example" required>
+                                            <select class="form-select" name="boligType" aria-label="Default select example">
                                                 <option selected>Åpne denne menyen</option>
                                                 <option value="Bofelleskap">Rom i bofelleskap</option>
                                                 <option value="Rom i leilighet">Rom i leilighet</option>
                                                 <option value="Hybel">Hybel</option>
                                                 <option value="Leilighet">Leilighet</option>
                                                 <option value="Hus">Hus</option>
-                                                <option value="Annet">Annet</option>
-
                                             </select><br>
 
                                             <label>Antall etasjer<label>
-                                            <select class="form-select" name="boligEtasje" aria-label="Default select example" required>
+                                            <select class="form-select" name="boligEtasje" aria-label="Default select example">
                                                 <option selected>Åpne denne menyen</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -211,7 +208,7 @@ if (isset($_REQUEST['opprettAnnonse'])) {
                                             </select><br>
 
                                             <label>Antall rom<label>
-                                            <select class="form-select" name="antallRom" aria-label="Default select example" required>
+                                            <select class="form-select" name="antallRom" aria-label="Default select example">
                                                 <option selected>Åpne denne menyen</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -219,8 +216,10 @@ if (isset($_REQUEST['opprettAnnonse'])) {
                                                 <option value="4">4</option>
                                                 <option value="Annet">Annet</option>
                                             </select><br>
-                                        
-                                        <input name="upload-file" type="file" required><br></div>
+                                       
+                                    
+                                      <!-- <div class="mb-3"><label class="form-label" name="upload-file'" for="customFile">Legg til bilder </label><input type="file" class="form-control" id="customFile" /></div><br>  -->
+                                        <div class="mb-3"><input name="upload-file" type="file"><br></div>
 
 
                         
