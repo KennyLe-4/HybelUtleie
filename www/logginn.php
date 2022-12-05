@@ -12,7 +12,7 @@ if (isset($_POST['logginn'])) { //ser hvis brukeren prøver å logge inn
     $sp->bindParam(':epost', $epost, PDO::PARAM_STR); //binder epost med php parameter
     $epost = $_POST['epost']; //legger til epost fra hva brukeren har skrevet inn til $epost paramater
 
-//utfører queryen og hvis det er feil printer det ut melding fra db.in.php
+//utfører queryen og hvis det er feil printer det ut melding fra db.inc.php
     try {
         $sp->execute();
     } catch (PDOException $e) {
@@ -20,7 +20,7 @@ if (isset($_POST['logginn'])) { //ser hvis brukeren prøver å logge inn
     }
 
     $bruker = $sp->fetch(PDO::FETCH_OBJ);
-    //hener pdo objekt
+    //hentr pdo objekt
 
     if ($bruker) {
         if (password_verify($_POST['passord'], $bruker->passord)) { //password verify for å gjenkenne om passordet stemmer med den krypterte
@@ -64,9 +64,25 @@ if (isset($_POST['logginn'])) { //ser hvis brukeren prøver å logge inn
                     </svg></span><span>Hybel</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="row mb-5">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
+              
                     <h2>Logg inn</h2>
                     <p class="w-lg-50">Curae hendrerit donec commodo hendrerit egestas tempus, turpis facilisis nostra nunc. Vestibulum dui eget ultrices.</p>
                 </div>
+                <!-- Dersom registreingen er i orden, printe ut suksessfull melding -->
+                <?php 
+    
+    if(isset($_SESSION['meldinger']))
+    {
+        ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Logg inn!</strong> <?= $_SESSION['meldinger']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php 
+        unset($_SESSION['meldinger']);
+    } 
+
+?>
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6 col-xl-4">
