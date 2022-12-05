@@ -220,7 +220,7 @@ if (isset($_REQUEST['opprettAnnonse'])) {
                                                 <option value="Annet">Annet</option>
                                             </select><br>
                                         
-                                        <input name="upload-file" type="file" required><br></div>
+                                            <div class="mb-3"><input name="upload-file" type="file" required><br></div>
 
 
                         
