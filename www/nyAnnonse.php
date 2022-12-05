@@ -99,14 +99,14 @@ if (isset($_REQUEST['opprettAnnonse'])) {
     //$q->debugDumpParams();
 
 
-    //Sjekker om noe er satt inn, returnerer UID. I dette tilfelle, redirecter til hjem.php
+    //Sjekker om noe er satt inn, returnerer UID. I dette tilfelle, redirecter til hjemmeside.php
     if ($pdo->lastInsertId() > 0) {
         //echo "Data inserted into database, identified by BID " . $pdo->lastInsertId() . ".";
         $_SESSION['meldinger'] = "Din annonse er lagt til";
         header('Location: hjemmeside.php'); // blir sendt tilbake til hjemmesiden med suksessfull melding 
     } else {
-        $_SESSION['feilmeldinger'] = "Det var en feil med din opplastning";
-        header('Location: hjemmeside.php'); // blir værende, men får feilkode
+        $_SESSION['feilmeldinger'] = "Prøv igjen!";
+        header('Location: nyAnnonse.php'); // blir værende, men får feilkode
         // "Data were not inserted into database.";
     }
 }
@@ -149,7 +149,20 @@ if (isset($_REQUEST['opprettAnnonse'])) {
     <link rel="stylesheet" href="../assets/css/Simple-Slider-Simple-Slider.css">
 </head>
 <body>
+<?php 
+    
+    if(isset($_SESSION['feilmeldinger']))
+    {
+        ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Det var en feil med opplastningen!</strong> <?= $_SESSION['meldinger']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php 
+        unset($_SESSION['meldinger']);
+    } 
 
+?>
 <nav class="navbar navbar-light navbar-expand-md py-3" data-aos="fade">
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="hjemmeside.php"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-house">
                         <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"></path>
