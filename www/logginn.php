@@ -12,7 +12,7 @@ if (isset($_POST['logginn'])) { //ser hvis brukeren prøver å logge inn
     $sp->bindParam(':epost', $epost, PDO::PARAM_STR); //binder epost med php parameter
     $epost = $_POST['epost']; //legger til epost fra hva brukeren har skrevet inn til $epost paramater
 
-//utfører queryen og hvis det er feil printer det ut melding fra db.in.php
+//utfører queryen og hvis det er feil printer det ut melding fra db.inc.php
     try {
         $sp->execute();
     } catch (PDOException $e) {
@@ -20,7 +20,7 @@ if (isset($_POST['logginn'])) { //ser hvis brukeren prøver å logge inn
     }
 
     $bruker = $sp->fetch(PDO::FETCH_OBJ);
-    //hener pdo objekt
+    //hentr pdo objekt
 
     if ($bruker) {
         if (password_verify($_POST['passord'], $bruker->passord)) { //password verify for å gjenkenne om passordet stemmer med den krypterte
