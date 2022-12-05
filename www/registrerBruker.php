@@ -37,13 +37,12 @@ if (isset($_REQUEST['registrer'])) {
 
     //Sjekker om noe er satt inn, returnerer UID.
     if ($pdo->lastInsertId() > 0) {
-		echo "Registrering fullført" . //$pdo->lastInsertId() . "."; // NB! Husk å endre på feilmelding
+		$_SESSION['meldinger'] = "Brukeren din er registrert!";  //$pdo->lastInsertId() . "."; // NB! Husk å endre på feilmelding
 			header('Location: logginn.php');
 		exit();
     } else {
-        echo "Registrerigen ble <b>ikke</b> gjennomført";
-			header('Location: registrerbruker.php');
-			//hvis ikke for brukeren feil medling
+        $_SESSION['feilmeldinger'] = "Prøv igjen!";
+			header('Location: registrerBruker.php');
 		exit();
 
 
@@ -52,7 +51,6 @@ if (isset($_REQUEST['registrer'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -65,6 +63,21 @@ if (isset($_REQUEST['registrer'])) {
     <link rel="stylesheet" href="../assets/css/Simple-Slider-Simple-Slider.css">
 </head>
 <body>
+<!-- Her blir feilmeldingen vist, dersom registeringen feilet. -->
+<?php 
+    
+    if(isset($_SESSION['feilmeldinger']))
+    {
+        ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Beklager registreringen ble ikke fullført!</strong> <?= $_SESSION['meldinger']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php 
+        unset($_SESSION['feilmeldinger']);
+    } 
+
+?>
     <div class="container" style="position:absolute; left:0; right:0; top: 50%; transform: translateY(-50%); -ms-transform: translateY(-50%); -moz-transform: translateY(-50%); -webkit-transform: translateY(-50%); -o-transform: translateY(-50%);">
         <div class="row d-flex d-xl-flex justify-content-center justify-content-xl-center">
             <div class="col-sm-12 col-lg-10 col-xl-9 col-xxl-7 bg-white shadow-lg" style="border-radius: 5px;">

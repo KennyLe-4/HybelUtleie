@@ -64,9 +64,25 @@ if (isset($_POST['logginn'])) { //ser hvis brukeren prøver å logge inn
                     </svg></span><span>Hybel</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="row mb-5">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
+              
                     <h2>Logg inn</h2>
                     <p class="w-lg-50">Curae hendrerit donec commodo hendrerit egestas tempus, turpis facilisis nostra nunc. Vestibulum dui eget ultrices.</p>
                 </div>
+                <!-- Dersom registreingen er i orden, printe ut suksessfull melding -->
+                <?php 
+    
+    if(isset($_SESSION['meldinger']))
+    {
+        ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Logg inn!</strong> <?= $_SESSION['meldinger']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php 
+        unset($_SESSION['meldinger']);
+    } 
+
+?>
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6 col-xl-4">
