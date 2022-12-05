@@ -65,7 +65,6 @@ if (isset($_REQUEST['registrer'])) {
     <link rel="stylesheet" href="../assets/css/Simple-Slider-Simple-Slider.css">
 </head>
 <body>
-    
     <div class="container" style="position:absolute; left:0; right:0; top: 50%; transform: translateY(-50%); -ms-transform: translateY(-50%); -moz-transform: translateY(-50%); -webkit-transform: translateY(-50%); -o-transform: translateY(-50%);">
         <div class="row d-flex d-xl-flex justify-content-center justify-content-xl-center">
             <div class="col-sm-12 col-lg-10 col-xl-9 col-xxl-7 bg-white shadow-lg" style="border-radius: 5px;">

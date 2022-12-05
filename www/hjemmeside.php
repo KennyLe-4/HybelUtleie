@@ -54,10 +54,20 @@ require_once ('../Includes/db.inc.php');
     } 
 
 ?>
+
                 <h2>Heading</h2>
                 <p class="w-lg-50">Curae hendrerit donec commodo hendrerit egestas tempus, turpis facilisis nostra nunc. Vestibulum dui eget ultrices.</p>
             </div>
+
         </div>
+        <!-- Lage form?? Jobbe videre med det i morgen. -->
+        <div class="btn-toolbar">
+        <div class="btn btn-outline-primary mr-3" button type="button" class="btn btn-primary btn-sm">Vis alle tilgjengelige</button></div>
+        <div class="btn btn-outline-primary mr-3" button type="button" class="btn btn-primary btn-sm">Vis billigste</button></div>
+        <div class="btn btn-outline-primary mr-1" button type="button" class="btn btn-primary btn-sm">Vis nylig lagt til</button></div>
+        </div>
+
+
         <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
             <div class="col">
                 <div></div>
