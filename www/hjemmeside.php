@@ -40,24 +40,34 @@ require_once ('../Includes/db.inc.php');
         <div class="row mb-5">
             <div class="col-md-8 col-xl-6 text-center mx-auto">
     <!-- Her sender vi en suksessfull melding, dersom registreringen ble gjennomført. -->
-    <?php
-
-if(isset($_SESSION['meldinger']))
+    <?php 
+    
+    if(isset($_SESSION['meldinger']))
     {
         ?>
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Vellykket!</strong> <?= $_SESSION['meldinger']; ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Bra jobbet!</strong> <?= $_SESSION['meldinger']; ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php 
         unset($_SESSION['meldinger']);
     } 
+
 ?>
 
                 <h2>Heading</h2>
                 <p class="w-lg-50">Curae hendrerit donec commodo hendrerit egestas tempus, turpis facilisis nostra nunc. Vestibulum dui eget ultrices.</p>
             </div>
+
         </div>
+        <!-- Lage form?? Jobbe videre med det i morgen. -->
+        <div class="btn-toolbar">
+        <div class="btn btn-outline-primary mr-3" button type="button" class="btn btn-primary btn-sm">Vis alle tilgjengelige</button></div>
+        <div class="btn btn-outline-primary mr-3" button type="button" class="btn btn-primary btn-sm">Vis billigste</button></div>
+        <div class="btn btn-outline-primary mr-1" button type="button" class="btn btn-primary btn-sm">Vis nylig lagt til</button></div>
+        </div>
+
+
         <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
             <div class="col">
                 <div></div>
@@ -184,6 +194,12 @@ if(isset($_SESSION['meldinger']))
                             <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                             <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                         </div>
+                        <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>
+                        <ol class="carousel-indicators">
+                            <li data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></li>
+                            <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
+                            <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
+                        </ol>
                     </div><button class="btn btn-primary" type="button">Se hybel</button>
                 </div>
             </div>

@@ -1,4 +1,5 @@
 <?php
+// Denne koden funker ikke med opplastning av  bilde.
 require_once('../Includes/db.nyAnnonse.inc.php');
 if (isset($_POST['opprettAnnonse'])) {
     $overskrift = $_POST['overskrift'];

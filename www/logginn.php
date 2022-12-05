@@ -1,16 +1,18 @@
 <?php
-/* Prøvd å logge inn? */
-
-if (isset($_POST['logginn'])) {
-
-    require_once("../Includes/db.inc.php");
-
-    $sql = "SELECT brukerID, epost, fnavn, enavn, passord FROM bruker WHERE epost = :epost";
-    $sp = $pdo->prepare($sql);
-    $sp->bindParam(':epost', $epost, PDO::PARAM_STR);
-    $epost = $_POST['epost'];
+require_once("../Includes/db.inc.php");
 
 
+
+if (isset($_POST['logginn'])) { //ser hvis brukeren prøver å logge inn 
+
+    
+
+    $sql = "SELECT * FROM bruker WHERE epost = :epost"; //sql query som tar epost 
+    $sp = $pdo->prepare($sql); //forbereder queryen
+    $sp->bindParam(':epost', $epost, PDO::PARAM_STR); //binder epost med php parameter
+    $epost = $_POST['epost']; //legger til epost fra hva brukeren har skrevet inn til $epost paramater
+
+//utfører queryen og hvis det er feil printer det ut melding fra db.in.php
     try {
         $sp->execute();
     } catch (PDOException $e) {
@@ -18,23 +20,23 @@ if (isset($_POST['logginn'])) {
     }
 
     $bruker = $sp->fetch(PDO::FETCH_OBJ);
+    //hener pdo objekt
 
     if ($bruker) {
-        if (password_verify($_POST['passord'], $bruker->passord)) {
+        if (password_verify($_POST['passord'], $bruker->passord)) { //password verify for å gjenkenne om passordet stemmer med den krypterte
             session_start();
 
+            //starter session med informasjon fra brukeren
             $_SESSION['brukerID'] = $bruker->brukerID;
             $_SESSION['fnavn'] = $bruker->fnavn;
             $_SESSION['enavn'] = $bruker->enavn;
             $_SESSION['epost'] = $bruker->epost;
             $_SESSION['passord'] = $bruker->passord;
-
-            header("Location: hjemmeside.php"); // Liten test på hvordan det kan se ut. 
+            
+            header("Location: hjemmeside.php"); // hvis alt lykkes blir du redigert til hjemmeside
         } else {
-            echo "Feil brukernavn eller passord";
+            echo "Feil brukernavn eller passord"; //hvis det er feil med brukernavn eller passord blir det printet ut til brukeren med feilmelding
         }
-    } else {
-        echo "Feil brukernavn eller passord";
     }
 }
 

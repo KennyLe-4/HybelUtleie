@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+//definerer databasen som skal brukes og hvor den er
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
     define('DB_PASS', '');
@@ -12,6 +13,7 @@ session_start();
     
     } catch (PDOException $e) {
         echo 'Error connecting to database: ' . $e->getMessage(); // Never do this in production
+        
     }
 ?>
 

@@ -5,14 +5,15 @@ $sql = "INSERT INTO bruker
         (epost, fnavn, enavn, passord) 
         VALUES 
         (:epost, :fnavn, :enavn, :passord)";
-
+//query for å legge til i databasen og setter verdi på de forrskellige
 $q = $pdo->prepare($sql);
-
+//forbedre queryen
 
 $q->bindParam(':epost', $epost, PDO::PARAM_STR);
 $q->bindParam(':fnavn', $firstname, PDO::PARAM_STR);
 $q->bindParam(':enavn', $lastname, PDO::PARAM_STR);
 $q->bindParam(':passord', $passord, PDO::PARAM_STR);
+//binder de forskjellige verdiene fra databsen med php parametere
 
 
 include_once('../Includes/VaskingAvTagger.inc.php'); // Henter vaskingAvTagger funksjonen. 
@@ -42,6 +43,7 @@ if (isset($_REQUEST['registrer'])) {
     } else {
         echo "Registrerigen ble <b>ikke</b> gjennomført";
 			header('Location: registrerbruker.php');
+			//hvis ikke for brukeren feil medling
 		exit();
 
 
@@ -62,24 +64,7 @@ if (isset($_REQUEST['registrer'])) {
     <link rel="stylesheet" href="../assets/css/Projects-Grid-images.css">
     <link rel="stylesheet" href="../assets/css/Simple-Slider-Simple-Slider.css">
 </head>
-
 <body>
-
-<?php
-
-if(isset($_SESSION['meldinger']))
-    {
-        ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Bra jobbet!</strong> <?= $_SESSION['meldinger']; ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        <?php 
-        unset($_SESSION['meldinger']);
-    } 
-
-?>
-	
     <div class="container" style="position:absolute; left:0; right:0; top: 50%; transform: translateY(-50%); -ms-transform: translateY(-50%); -moz-transform: translateY(-50%); -webkit-transform: translateY(-50%); -o-transform: translateY(-50%);">
         <div class="row d-flex d-xl-flex justify-content-center justify-content-xl-center">
             <div class="col-sm-12 col-lg-10 col-xl-9 col-xxl-7 bg-white shadow-lg" style="border-radius: 5px;">
@@ -106,13 +91,8 @@ if(isset($_SESSION['meldinger']))
                     <div class="text-center"><a class="small" href="logginn.php">Har du allerde en bruker? Logg inn!</a></div>
                 </div>
             </div>
-        </div><script>
+        </div>
 
-
-
-
-
-</script>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
