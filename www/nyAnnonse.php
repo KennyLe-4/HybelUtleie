@@ -45,7 +45,7 @@ if (isset($_REQUEST['opprettAnnonse'])) {
             "png" => "image/png"
         );
         $max_file_size = 2000000; // i bytes
-        $dir = $_SERVER['DOCUMENT_ROOT'] . "/HybelUtleie/assets/bilder/";
+        $dir = $_SERVER['DOCUMENT_ROOT'] . "/HybelUtleie/assets/";
 
         // Mekker katalog, hvis den ikke allerede finnes
         if (!file_exists($dir)) {
@@ -58,7 +58,7 @@ if (isset($_REQUEST['opprettAnnonse'])) {
 
         // mekker navnet på filen, ved hjelp av ønskelig input + filtype
         do {
-            $filename  = substr(md5(date('YmdHis')), 0, 5) . '.' . $suffix;
+            $filename  = htmlspecialchars( basename( $_FILES["upload-file"]["tmp_name"])) . '.' . $suffix;
         } while (file_exists($dir . $filename));
 
         /* Errors? */
