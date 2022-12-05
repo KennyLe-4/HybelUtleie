@@ -90,7 +90,6 @@ if (isset($_REQUEST['opprettAnnonse'])) {
 
     //Henter eier fra innlogget bruker
     $eier = $_SESSION["brukerID"];
-    
     try {
         $q->execute();
     } catch (PDOException $e) {
@@ -99,14 +98,14 @@ if (isset($_REQUEST['opprettAnnonse'])) {
     //$q->debugDumpParams();
 
 
-    //Sjekker om noe er satt inn, returnerer UID. I dette tilfelle, redirecter til hjemmeside.php
+    //Sjekker om noe er satt inn, returnerer UID. I dette tilfelle, redirecter til hjem.php
     if ($pdo->lastInsertId() > 0) {
         //echo "Data inserted into database, identified by BID " . $pdo->lastInsertId() . ".";
         $_SESSION['meldinger'] = "Din annonse er lagt til";
         header('Location: hjemmeside.php'); // blir sendt tilbake til hjemmesiden med suksessfull melding 
     } else {
-        $_SESSION['feilmeldinger'] = "Prøv igjen!";
-        header('Location: nyAnnonse.php'); // blir værende, men får feilkode
+        $_SESSION['feilmeldinger'] = "Det var en feil med din opplastning";
+        header('Location: hjemmeside.php'); // blir værende, men får feilkode
         // "Data were not inserted into database.";
     }
 }
@@ -149,20 +148,7 @@ if (isset($_REQUEST['opprettAnnonse'])) {
     <link rel="stylesheet" href="../assets/css/Simple-Slider-Simple-Slider.css">
 </head>
 <body>
-<?php 
-    
-    if(isset($_SESSION['feilmeldinger']))
-    {
-        ?>
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Det var en feil med opplastningen!</strong> <?= $_SESSION['meldinger']; ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        <?php 
-        unset($_SESSION['meldinger']);
-    } 
 
-?>
 <nav class="navbar navbar-light navbar-expand-md py-3" data-aos="fade">
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="hjemmeside.php"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-house">
                         <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"></path>
@@ -189,32 +175,30 @@ if (isset($_REQUEST['opprettAnnonse'])) {
                             <h2 class="text-center mb-4">Ny annonse</h2>
                             <form method="post" enctype="multipart/form-data" >
                           
-                                <div class="mb-3"><input class="form-control" type="text" id="name-1" name="overskrift" placeholder="Overskrift" required></div> 
+                                <div class="mb-3"><input class="form-control" type="text" id="name-1" name="overskrift" placeholder="Overskrift"></div> 
 
-                                <div class="mb-3"><input class="form-control" type="text" id="email-1" name="gateAdresse" placeholder="Adresse" required></div>
+                                <div class="mb-3"><input class="form-control" type="text" id="email-1" name="gateAdresse" placeholder="Adresse"></div>
 
-                                <div class="mb-3"><input class="form-control" type="number" id="email-1" name="pris" placeholder="Pris" required></div>
+                                <div class="mb-3"><input class="form-control" type="number" id="email-1" name="pris" placeholder="Pris"></div>
 
-                                <div class="mb-3"><input class="form-control" type="number" id="email-1" name="depositum" placeholder="Depositum" required></div>
+                                <div class="mb-3"><input class="form-control" type="number" id="email-1" name="depositum" placeholder="Depositum"></div>
 
 
-                                <div class="mb-3"><textarea class="form-control" id="message-2" name="beskrivelse" rows="6" placeholder="Beskrivelse" required></textarea></div>
+                                <div class="mb-3"><textarea class="form-control" id="message-2" name="beskrivelse" rows="6" placeholder="Beskrivelse"></textarea></div>
 
                                 <!-- De ulike knappene for type bolig  -->
                                             <label>Hva slags type bolig skal du leie ut<label>
-                                            <select class="form-select" name="boligType" aria-label="Default select example" required>
+                                            <select class="form-select" name="boligType" aria-label="Default select example">
                                                 <option selected>Åpne denne menyen</option>
                                                 <option value="Bofelleskap">Rom i bofelleskap</option>
                                                 <option value="Rom i leilighet">Rom i leilighet</option>
                                                 <option value="Hybel">Hybel</option>
                                                 <option value="Leilighet">Leilighet</option>
                                                 <option value="Hus">Hus</option>
-                                                <option value="Annet">Annet</option>
-
                                             </select><br>
 
                                             <label>Antall etasjer<label>
-                                            <select class="form-select" name="boligEtasje" aria-label="Default select example" required>
+                                            <select class="form-select" name="boligEtasje" aria-label="Default select example">
                                                 <option selected>Åpne denne menyen</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -224,7 +208,7 @@ if (isset($_REQUEST['opprettAnnonse'])) {
                                             </select><br>
 
                                             <label>Antall rom<label>
-                                            <select class="form-select" name="antallRom" aria-label="Default select example" required>
+                                            <select class="form-select" name="antallRom" aria-label="Default select example">
                                                 <option selected>Åpne denne menyen</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -232,8 +216,10 @@ if (isset($_REQUEST['opprettAnnonse'])) {
                                                 <option value="4">4</option>
                                                 <option value="Annet">Annet</option>
                                             </select><br>
-                                        
-                                            <div class="mb-3"><input name="upload-file" type="file" required><br></div>
+                                       
+                                    
+                                      <!-- <div class="mb-3"><label class="form-label" name="upload-file'" for="customFile">Legg til bilder </label><input type="file" class="form-control" id="customFile" /></div><br>  -->
+                                        <div class="mb-3"><input name="upload-file" type="file"><br></div>
 
 
                         

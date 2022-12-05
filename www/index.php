@@ -17,6 +17,7 @@
     <?php unset($_SESSION['message']);
     endif; ?>
 <body>
+    
     <nav class="navbar navbar-light navbar-expand-md py-3" data-aos="fade">
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-house">
                         <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"></path>
@@ -164,12 +165,6 @@
                             <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                             <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                         </div>
-                        <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>
-                        <ol class="carousel-indicators">
-                            <li data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></li>
-                            <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
-                            <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
-                        </ol>
                     </div><button class="btn btn-primary" type="button">Se hybel</button>
                 </div>
             </div>

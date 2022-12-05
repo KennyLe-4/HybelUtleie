@@ -1,5 +1,6 @@
 <?php
-require_once ('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc.php');
+require_once("/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc.php");
+
 ?>
 
 <!DOCTYPE html>
