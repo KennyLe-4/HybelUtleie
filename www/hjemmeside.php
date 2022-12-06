@@ -39,14 +39,14 @@ require_once ('../Includes/db.inc.php');
     <div class="container py-4 py-xl-5">
         <div class="row mb-5">
             <div class="col-md-8 col-xl-6 text-center mx-auto">
-    <!-- Her sender vi en suksessfull melding, dersom registreringen ble gjennomført. -->
+    <!-- Her sender vi en suksessfull melding, dersom logg inn ble gjennomført. -->
     <?php 
     
     if(isset($_SESSION['meldinger']))
     {
         ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Bra jobbet!</strong> <?= $_SESSION['meldinger']; ?>
+                <strong> <?= $_SESSION['meldinger']; ?> </strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php 
