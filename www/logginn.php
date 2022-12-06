@@ -5,14 +5,14 @@ require_once("../Includes/db.inc.php");
 
 if (isset($_POST['logginn'])) { //ser hvis brukeren prøver å logge inn 
 
-    
+
 
     $sql = "SELECT * FROM bruker WHERE epost = :epost"; //sql query som tar epost 
     $sp = $pdo->prepare($sql); //forbereder queryen
     $sp->bindParam(':epost', $epost, PDO::PARAM_STR); //binder epost med php parameter
     $epost = $_POST['epost']; //legger til epost fra hva brukeren har skrevet inn til $epost paramater
 
-//utfører queryen og hvis det er feil printer det ut melding fra db.inc.php
+    //utfører queryen og hvis det er feil printer det ut melding fra db.inc.php
     try {
         $sp->execute();
     } catch (PDOException $e) {
@@ -32,15 +32,22 @@ if (isset($_POST['logginn'])) { //ser hvis brukeren prøver å logge inn
             $_SESSION['enavn'] = $bruker->enavn;
             $_SESSION['epost'] = $bruker->epost;
             $_SESSION['passord'] = $bruker->passord;
-            
-            header("Location: hjemmeside.php"); // hvis alt lykkes blir du redigert til hjemmeside
+
+            header("Location: hjemmeside.php"); // Blir sendt til hjemmeside dersom alt stemmer
+            $_SESSION['meldinger'] = "Velkommen, " . $_SESSION['fnavn'];  // Lager session innlogget melding. 
+            exit();
+
         } else {
-            echo "Feil brukernavn eller passord"; //hvis det er feil med brukernavn eller passord blir det printet ut til brukeren med feilmelding
+
+            $_SESSION['feilmeldinger'] = "Prøv igjen!"; // Lager session feil elding
+            header('Location: logginn.php'); // Blir værende på siden, men får feil melding. 
+            exit();
         }
     }
 }
-
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,50 +65,59 @@ if (isset($_POST['logginn'])) { //ser hvis brukeren prøver å logge inn
 <body>
     <section class="position-relative py-4 py-xl-5">
         <div class="container">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="hjemmeside.php"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-house">
-                        <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"></path>
-                        <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"></path>
-                    </svg></span><span>Hybel</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="row mb-5">
-                <div class="col-md-8 col-xl-6 text-center mx-auto">
-              
-                    <h2>Logg inn</h2>
-                    <p class="w-lg-50">Curae hendrerit donec commodo hendrerit egestas tempus, turpis facilisis nostra nunc. Vestibulum dui eget ultrices.</p>
-                </div>
-                <!-- Dersom registreingen er i orden, printe ut suksessfull melding -->
-                <?php 
-    
-    if(isset($_SESSION['meldinger']))
-    {
-        ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Logg inn!</strong> <?= $_SESSION['meldinger']; ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        <?php 
-        unset($_SESSION['meldinger']);
-    } 
+            <div class="container"><a class="navbar-brand d-flex align-items-center" href="hjemmeside.php"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-house">
+                            <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"></path>
+                            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"></path>
+                        </svg></span><span>Hybel</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="row mb-5">
+                    <div class="col-md-8 col-xl-6 text-center mx-auto">
 
-?>
-            </div>
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-6 col-xl-4">
-                    <div class="card mb-5">
-                        <div class="card-body d-flex flex-column align-items-center">
-                            <div class="bs-icon-xl bs-icon-circle bs-icon-primary bs-icon my-4"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-person">
-                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
-                                </svg></div>
-                            <form class="text-center" method="post">
-                                <div class="mb-3"><input class="form-control" type="email" name="epost" placeholder="Email"></div>
-                                <div class="mb-3"><input class="form-control" type="password" name="passord" placeholder="Password"></div>
-                                <div class="mb-3"><button class="btn btn-primary d-block w-100" name ="logginn" id="logginn">Login</button></div>
-                                <a class="small" href="registrerBruker.php">Har du ikke bruker? Registrer deg her!</a>
-                            </form>
+                        <h2>Logg inn</h2>
+                        <p class="w-lg-50">Curae hendrerit donec commodo hendrerit egestas tempus, turpis facilisis nostra nunc. Vestibulum dui eget ultrices.</p>
+                    </div>
+                    <!-- Dersom registreingen er i orden, printe ut suksessfull melding -->
+                    <?php
+                    if (isset($_SESSION['meldinger'])) {
+                    ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Logg inn!</strong> <?= $_SESSION['meldinger']; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php
+                        unset($_SESSION['meldinger']);
+                    // Dersom logg inn ikke er suksessfull - print feilmelding
+                    } else { 
+
+                        if (isset($_SESSION['feilmeldinger'])) {
+                        ?>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Logg inn mislyktes!</strong> <?= $_SESSION['feilmeldinger']; ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                    <?php
+                            unset($_SESSION['feilmeldinger']);
+                        }
+                    }
+                    ?>
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-6 col-xl-4">
+                        <div class="card mb-5">
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <div class="bs-icon-xl bs-icon-circle bs-icon-primary bs-icon my-4"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-person">
+                                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
+                                    </svg></div>
+                                <form class="text-center" method="post">
+                                    <div class="mb-3"><input class="form-control" type="email" name="epost" placeholder="Email"></div>
+                                    <div class="mb-3"><input class="form-control" type="password" name="passord" placeholder="Password"></div>
+                                    <div class="mb-3"><button class="btn btn-primary d-block w-100" name="logginn" id="logginn">Login</button></div>
+                                    <a class="small" href="registrerBruker.php">Har du ikke bruker? Registrer deg her!</a>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
     <footer>
         <header>
