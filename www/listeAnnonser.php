@@ -2,7 +2,7 @@
 require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/VaskingAvTagger.inc.php'); ?>
 
 
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css%22%3E
 <div class="container">
 <div class="card-body" >
 <h1>Annonser</h1>
@@ -27,7 +27,7 @@ echo "
      <th> Overskrift  </th>
      <th> Adresse </th>
      <th> Pris per Måned </th>
-   
+
      <th> Bilde </th>
      <th> Se Mer </th>
  </tr>";
@@ -39,22 +39,22 @@ if($q->rowCount() > 0) {
     //hvis rowcount er større enn 0
     foreach($annonser as $annonse) {
         //går gjennom hver objekt i databsen
-       
+
         echo "<tr>";
         echo "<td>" . $annonse->annonseID . "</td>";
         echo "<td>" . $annonse->overskrift . "</td>";
         echo "<td>" . $annonse->gateAdresse . "</td>";
         echo "<td>" . $annonse->pris . "</td>";
-     
-  
-      
-        echo "<td width='310'>" . "<img src='/HybelUtleie/assets/phpZWQKq6.jpeg' alt='image' width='300' 
-        height='200'>" .  "</td>";
+
+
+
+        echo "<td width='310'>" . "<img src='/HybelUtleie/bilder/" . $annonse->bilde . "' alt='image' width='300' 
+        height='200'>" .   "</td>";
         echo "<td width='250'>" . '<a href="seAnnonse.php?id=<?=$annonse->annonseID; ?>" class="btn btn-primary ">Ser mer om Boligen her</a>' . "</td>";
-        
+
         echo "</tr>";
         //hoved inholdet til tabblene
-       
+
     }
 } else {
     echo "Queryen førte tin en tom resultat";
