@@ -1,6 +1,7 @@
 <?php require_once('../Includes/db.inc.php');
 require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/VaskingAvTagger.inc.php'); ?>
-<a href=""></a>
+
+
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <div class="container">
 <div class="card-body" >
@@ -19,7 +20,7 @@ try {
 }
 //slår opp feil  hvis queryen ikke går gjennom
 
-echo "<table class='table table-bordered table-striped'>";
+echo "<table  class='table table-bordered table-striped' style='float: right' width='500px' style='font-size:20px' >";
 echo "<div class='card-header'>";
 echo " 
  <tr>
@@ -27,9 +28,8 @@ echo "
      <th> Adresse </th>
      <th> Pris per Måned </th>
    
-     <th> Boligtype </th>
-   
      <th> Bilde </th>
+     <th> Se Mer </th>
  </tr>";
  //hode tabbel
 $annonser = $q->fetchAll(PDO::FETCH_OBJ);
@@ -41,13 +41,17 @@ if($q->rowCount() > 0) {
         //går gjennom hver objekt i databsen
        
         echo "<tr>";
+        echo "<td>" . $annonse->annonseID . "</td>";
         echo "<td>" . $annonse->overskrift . "</td>";
         echo "<td>" . $annonse->gateAdresse . "</td>";
         echo "<td>" . $annonse->pris . "</td>";
      
-        echo "<td>" . $annonse->boligType . "</td>";
+  
       
-        echo "<td>" . "<img src='../assets/' >" . $annonse->bilde . "</td>";
+        echo "<td width='310'>" . "<img src='/HybelUtleie/assets/phpZWQKq6.jpeg' alt='image' width='300' 
+        height='200'>" .  "</td>";
+        echo "<td width='250'>" . '<a href="seAnnonse.php?id=<?=$annonse->annonseID; ?>" class="btn btn-primary ">Ser mer om Boligen her</a>' . "</td>";
+        
         echo "</tr>";
         //hoved inholdet til tabblene
        
