@@ -93,27 +93,27 @@ require_once ('../Includes/db.inc.php');
                     <div class="col"></div>
                     <div class="row justify-content-center">
                         <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column item">
-                            <h3 class="fs-6">Services</h3>
+                            <h3 class="fs-6">Tjenester</h3>
                             <ul class="list-unstyled">
-                                <li><a class="link-secondary" href="#">Web design</a></li>
-                                <li><a class="link-secondary" href="#">Development</a></li>
-                                <li><a class="link-secondary" href="#">Hosting</a></li>
+                                <li><a class="link-secondary" href="listeAnnonser.php">Hybel Utleie</a></li>
+                                <li><a class="link-secondary" href="listeAnnonser.php">Bolig Marked</a></li>
+                                <li><a class="link-secondary" href="listeAnnonser.php">Leie Ut</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column item">
-                            <h3 class="fs-6">About</h3>
+                            <h3 class="fs-6">Om Oss</h3>
                             <ul class="list-unstyled">
-                                <li><a class="link-secondary" href="#">Company</a></li>
-                                <li><a class="link-secondary" href="#">Team</a></li>
-                                <li><a class="link-secondary" href="#">Legacy</a></li>
+                                <li><a class="link-secondary" href="#">Se side om Oss</a></li>
+                                <li><a class="link-secondary" href="#">Det vi holder på med</a></li>
+                                <li><a class="link-secondary" href="#">Hvordan vi startet</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column item">
-                            <h3 class="fs-6">Careers</h3>
+                            <h3 class="fs-6">Kontakt Oss</h3>
                             <ul class="list-unstyled">
-                                <li><a class="link-secondary" href="#">Job openings</a></li>
-                                <li><a class="link-secondary" href="#">Employee success</a></li>
-                                <li><a class="link-secondary" href="#">Benefits</a></li>
+                                <li><a class="link-secondary" href="#">Kontakt Informasjon</a></li>
+                                <li><a class="link-secondary" href="#">Email</a></li>
+                                <li><a class="link-secondary" href="#">Hvor Du Finner Oss</a></li>
                             </ul>
                         </div>
                         <div class="col-lg-3 text-center text-lg-start d-flex flex-column align-items-center order-first align-items-lg-start order-lg-last item social">
