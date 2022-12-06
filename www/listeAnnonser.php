@@ -34,6 +34,13 @@
 </html>
 <?php 
 require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc.php');
+require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/controller/hentAnnonser.php');
+require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/controller/nyligeAnnonser.php');
+require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/controller/tilgjengeligeAnnonser.php');
+require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/controller/sorteringAvPris.php');
+
+
+
 ?>
 
 
@@ -42,63 +49,52 @@ require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc.
 <div class="container">
 <div class="card-body" >
 <h1>Annonser</h1>
+<form method="post" action="">
+        <input type="submit" name="alle" value="Alle annonser">
+        <input type="submit" name="tilgjengelig" value="Tilgjenglige">
+        <input type="submit" name="nylig" value="Nylig lagt til">
+        <input type="submit" name="stigendePris" value="Pris - stigende (billigst først)">
+        <input type="submit" name="synkendePris" value="Pris - synkende (dyrest først)">
+
+
+</form>
+</body>
+</html>
 <br>
 
 <?php
-
-$q = $pdo->prepare("SELECT * FROM Annonser");
-//forbereder queryen for å bruke til php
-
-try {
-    $q->execute();
-} catch (PDOException $e) {
-    echo "Error querying database: " . $e->getMessage() . "<br>"; // Never do this in production
+if (isset($_REQUEST['alle'])) { // Hvis "alle" knappen er trykket på, kjør følgende:
+    $hentAn = new Annonse; // Instantiserer/lager et nytt objekt av klassen Annonse.
+    $hentAn->hentAlleAnnonser(); // Objektet kaller på funksjonen hentAlleAnnonser.
 }
-//slår opp feil  hvis queryen ikke går gjennom
 ?>
-<table  class='table table-bordered table-striped' style='float: right' width='500px' style='font-size:20px' >
-<div class='card-header'>
- 
- <tr>
- 
-     <th> Overskrift  </th>
-     <th> Adresse </th>
-     <th> Pris per Måned </th>
-     <th> Bilde </th>
-     <th> Se Mer </th>
- </tr>
- <?php
- //hode tabbel
-$annonser = $q->fetchAll(PDO::FETCH_OBJ);
-//annonser som henter informasjon fra pdo altså databasen
-
-if($q->rowCount() > 0) {
-    //hvis rowcount er større enn 0
-    foreach($annonser as $annonse) {
-        //går gjennom hver objekt i databsen
-
-        echo "<tr>";
-     
-        echo "<td>" . $annonse->overskrift . "</td>";
-        echo "<td>" . $annonse->gateAdresse . "</td>";
-        echo "<td>" . $annonse->pris . "</td>";
-        echo "<td width='310'>" . "<img src='/HybelUtleie/bilder/" . $annonse->bilde . "' alt='image' width='300' 
-        height='200'>" .   "</td>";
-       ?>
-    <td>  <a href="seAnnonse.php?id=<?=$annonse->annonseID; ?>" class="btn btn-primary ">Se Mer om Boligen her</a></td>
 
 <?php
-        echo "</tr>";
-        //hoved inholdet til tabblene
-
-    }
-} else {
-    echo "Queryen førte til en tom resultat";
+if (isset($_REQUEST['tilgjengelig'])) { // Hvis "tilgjengelige" knappen er trykket på, kjør følgende:
+    $tilgjengelig = new TilgjengeligeAnnonser; // Instantiserer/lager et nytt objekt av klassen Annonse.
+    $tilgjengelig->HentTilgjengeligeAnnonser(); // Objektet kaller på funksjonen hentAlleAnnonser.
 }
-
-
-
-
 ?>
-</div>
-</div>
+
+<?php
+if (isset($_REQUEST['nylig'])) {              // Hvis "nylig" knappen er trykket på, kjør følgende:
+    $hentNyligeAnn = new nyligeAnnonser;     // Instantiserer/lager et nytt objekt av klassen nyligeAnnonser.
+    $hentNyligeAnn->hentNyligeAnnonser();    // Objektet kaller på funksjonen hentNyligeAnnonser.
+}
+?>
+
+    
+<?php
+if (isset($_REQUEST['stigendePris'])) { // Hvis "stigedePris" knappen er trykket på, kjør følgende:
+    $stigPris = new Pris();             // Instantiserer/lager et nytt objekt av klassen Pris.
+    $stigPris->hentPrisStigende();      // Objektet kaller på funksjonen hentPrisStigende.
+}
+?>
+
+<?php
+if (isset($_REQUEST['synkendePris'])) { //  Hvis "synkendePris" knappen er trykket på, kjør følgende:
+    $synkPris = new Pris();             //  Instantiserer/lager et nytt objekt av klassen Pris.
+    $synkPris->hentPrisSynkende();      //  Objektet kaller på funksjonen hentPrisStigende.
+}
+?>
+
