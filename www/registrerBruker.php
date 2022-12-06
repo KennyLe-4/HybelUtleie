@@ -117,7 +117,7 @@ if (isset($_REQUEST['registrer'])) {
                         <!-- Etternavn -->
                         <div class="row mb-3">
                             <div class="mb-3">
-                                <div class="col"><input class="form-control form-control-user" type="text" placeholder="Etternavn" required></div>
+                                <div class="col"><input class="form-control form-control-user" type="text" name="enavn" placeholder="Etternavn" required></div>
                             </div>
                         </div>
 
