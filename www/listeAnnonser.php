@@ -45,9 +45,6 @@ if($q->rowCount() > 0) {
         echo "<td>" . $annonse->overskrift . "</td>";
         echo "<td>" . $annonse->gateAdresse . "</td>";
         echo "<td>" . $annonse->pris . "</td>";
-
-
-
         echo "<td width='310'>" . "<img src='/HybelUtleie/bilder/" . $annonse->bilde . "' alt='image' width='300' 
         height='200'>" .   "</td>";
         echo "<td width='250'>" . '<a href="seAnnonse.php?id=<?=$annonse->annonseID; ?>" class="btn btn-primary ">Ser mer om Boligen her</a>' . "</td>";
