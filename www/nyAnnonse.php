@@ -45,7 +45,7 @@ if (isset($_REQUEST['opprettAnnonse'])) {
             "png" => "image/png"
         );
         $max_file_size = 2000000; // i bytes
-        $dir = $_SERVER['DOCUMENT_ROOT'] . "/HybelUtleie/assets/bilder/";
+        $dir = $_SERVER['DOCUMENT_ROOT'] . "/HybelUtleie/bilder/";
 
         // Mekker katalog, hvis den ikke allerede finnes
         if (!file_exists($dir)) {
