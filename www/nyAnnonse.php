@@ -24,7 +24,7 @@ $q->bindParam(':antallRom', $antallRom, PDO::PARAM_INT);
 $q->bindParam(':status', $status, PDO::PARAM_BOOL);
 $q->bindParam(':bilde', $bilde, PDO::PARAM_STR);
 
-
+/* Hvis oprretAnnonse er trykket på. */
 if (isset($_POST['opprettAnnonse'])) {
     $overskrift = vaskingAvTagger($_POST['overskrift']);
     $beskrivelse = vaskingAvTagger($_POST['beskrivelse']);
@@ -47,14 +47,14 @@ if (isset($_POST['opprettAnnonse'])) {
             "jpg" => "image/jpg",
             "png" => "image/png"
         );
-        $max_file_size = 2000000; // i bytes
+        $max_file_size = 2000000; // Dette er i bytes
 
 
 
         $dir = $_SERVER['DOCUMENT_ROOT'] . "/HybelUtleie/bilder/";
 
 
-        // Mekker katalog, hvis den ikke allerede finnes
+        // Oppretter en katalog i filen, dersom den ikke allerede finnes.
         if (!file_exists($dir)) {
             if (!mkdir($dir, 0777, true))
                 die("Cannot create directory..." . $dir);
@@ -64,14 +64,14 @@ if (isset($_POST['opprettAnnonse'])) {
         // Sjekker hvilke filtype det er, gir dette til variablene, som brukes i navngenerering
         $suffix = array_search($_FILES['upload-file']['type'], $acc_file_types);
 
-        // mekker navnet på filen, ved hjelp av ønskelig input + filtype
+        // Oppretter navnet på filen, ved hjelp av ønskelig input + filtype
         do {
             $filename  = basename($_FILES["upload-file"]["tmp_name"]) . '.' . $suffix;
         } while (file_exists($dir . $filename));
 
 
 
-        /* Errors? */
+        /* Feilmeldinger */
         if (!in_array($file_type, $acc_file_types)) {
             $types = implode(", ", array_keys($acc_file_types));
             $messages['error'][] = "Invalid file type (only <em>" . $types . "</em> are accepted)";
@@ -79,7 +79,7 @@ if (isset($_POST['opprettAnnonse'])) {
         if ($file_size > $max_file_size)
             $messages['error'][] = "The file size (" . round($file_size / 1048576, 2) . " MB) exceeds max file size (" . round($max_file_size / 1048576, 2) . " MB)"; // Bin. conversion
 
-        // Hvis alt går etter planen
+        // Dersom alt går bra
         if (empty($messages)) {
             //Bestemmer hvor filen skal plasseres, og laster den opp. 
             $filepath = $dir . $filename;
@@ -104,7 +104,8 @@ if (isset($_POST['opprettAnnonse'])) {
     try {
         $q->execute();
     } catch (PDOException $e) {
-        echo "Error querying database: "; //. $e->getMessage() . "<br>"; // Never do this in production
+        echo "Noe feil med opplastningen";
+        //echo "Error querying database: "; //. $e->getMessage() . "<br>"; // Never do this in production
     }
     //$q->debugDumpParams();
 
@@ -213,7 +214,7 @@ if (isset($_POST['opprettAnnonse'])) {
                         <option value="Annet">Annet</option>
                     </select><br>
 
-                    <div class="mb-3"><input  name="upload-file" type="file" required><br></div>
+                    <div class="mb-3"><input name="upload-file" type="file" required><br></div>
 
                     <!-- Dette er legg til fil knappen -->
                     <div><button class="btn btn-primary d-block w-100" name="opprettAnnonse" type="submit">Opprett annonse</button></div>

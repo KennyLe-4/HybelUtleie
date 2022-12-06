@@ -1,7 +1,7 @@
 <?php
 require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc.php');
 require_once("/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/sjekkLogInn.php");
-$bruker_data = check_login($con);
+$bruker_data = check_login($con); // Sjekker om brukeren er logget inn
 
 ?>
 <!DOCTYPE html>
@@ -44,11 +44,10 @@ $bruker_data = check_login($con);
 </body>
 
 </html>
-
 <div class="container">
     <div class="card-body">
         <table class="table table-bordered table-striped">
-            <?php //bruker design fra bootstrap her kommer det diverse klasser og designs 
+            <?php //bruker design fra bootstrap, her kommer det diverse klasser og designs 
             ?>
             <div class="card-header">
                 <br>
@@ -65,21 +64,19 @@ $bruker_data = check_login($con);
                     <th>Email</th>
                     <th>Passord</th>
                     <th>Endre</th>
-                    <?php //tabbel hode for brukeren 
+                    <?php //tabell hode for brukeren 
                     ?>
                 </tr>
             </thead>
             <tbody>
                 <?php
 
-                $query = ("SELECT * from bruker where brukerID = '" . $_SESSION['brukerID'] . "'");
-                //tar session inni sql statement for at den skal hente brukeren som er logget på
+                $query = ("SELECT * from bruker where brukerID = '" . $_SESSION['brukerID'] . "'"); //tar session inni sql statement for at den skal hente brukeren som er logget på
                 $statement = $pdo->prepare($query);
                 $statement->execute();
                 $statement->setFetchMode(PDO::FETCH_OBJ);
 
-                $result = $statement->fetch();
-                //bruker fetch og ikke fetch all for å bare hente den ene brukeren
+                $result = $statement->fetch(); //bruker fetch og ikke fetch all for å bare hente den ene brukeren
                 if ($result) {
                 ?>
                     <tr>
@@ -89,12 +86,12 @@ $bruker_data = check_login($con);
                         <td><?= $result->epost; ?></td>
                         <td></td>
                         <td>
-                            <a href="../visEndreInfo/endreBruker.php?id=<?= $result->brukerID; ?>" class="btn btn-primary ">Endre</a>
-                            <?php //tar result-brukerID variabelen videre til endrebruker siden 
+                            <a href="../visEndreInfo/endreBruker.php?id=<?= $result->brukerID; ?>" class="btn btn-primary ">Endre</a>  
+                            <?php // Tar result-brukerID variabelen videre til endrebruker siden. Setter $result=brukerID og plasserer det i URL.
                             ?>
                         </td>
                     </tr>
-                    <?php //resultatene fra queryen som blir printet under tabbel holde og knapp hvis du vil endre 
+                    <?php 
                     ?>
                 <?php
                 } else {
@@ -106,7 +103,7 @@ $bruker_data = check_login($con);
         </table>
     </div>
 <?php
-                    //hvis det oppstår at noen uten bruker har tilgang til knappen blir den redigert til loginn siden
+                    
                 }
 ?>
 </div>

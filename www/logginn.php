@@ -1,13 +1,12 @@
 <?php
-require_once("../Includes/db.inc.php");
+require_once("../Includes/db.inc.php"); // Henter database tilkobling
 
 
 
-if (isset($_POST['logginn'])) { //ser hvis brukeren prøver å logge inn 
+if (isset($_POST['logginn'])) { // Er logginn knapt trykt på? Kjør følgende kode:
 
 
-
-    $sql = "SELECT * FROM bruker WHERE epost = :epost"; //sql query som tar epost 
+    $sql = "SELECT * FROM bruker WHERE epost = :epost"; // SQL query skal matche epost parameter fra DB. 
     $sp = $pdo->prepare($sql); //forbereder queryen
     $sp->bindParam(':epost', $epost, PDO::PARAM_STR); //binder epost med php parameter
     $epost = $_POST['epost']; //legger til epost fra hva brukeren har skrevet inn til $epost paramater
@@ -16,14 +15,15 @@ if (isset($_POST['logginn'])) { //ser hvis brukeren prøver å logge inn
     try {
         $sp->execute();
     } catch (PDOException $e) {
-        echo $e->getMessage() . "<br>";
+        echo "Noe feil med tilkoblingen"; // Viser feilmelding til bruker, men ikke spesfikt hva.
+        //echo $e->getMessage() . "<br>";
     }
 
     $bruker = $sp->fetch(PDO::FETCH_OBJ);
-    //hentr pdo objekt
+    // Henter pdo objekt
 
     if ($bruker) {
-        if (password_verify($_POST['passord'], $bruker->passord)) { //password verify for å gjenkenne om passordet stemmer med den krypterte
+        if (password_verify($_POST['passord'], $bruker->passord)) { //password verify for sjekke om passordet stemmer med den krypterte
             session_start();
 
             //starter session med informasjon fra brukeren
@@ -36,7 +36,6 @@ if (isset($_POST['logginn'])) { //ser hvis brukeren prøver å logge inn
             header("Location: hjemmeside.php"); // Blir sendt til hjemmeside dersom alt stemmer
             $_SESSION['meldinger'] = "Velkommen, " . $_SESSION['fnavn'];  // Lager session innlogget melding. 
             exit();
-
         } else {
 
             $_SESSION['feilmeldinger'] = "Prøv igjen!"; // Lager session feilmelding
@@ -85,8 +84,8 @@ if (isset($_POST['logginn'])) { //ser hvis brukeren prøver å logge inn
                         </div>
                         <?php
                         unset($_SESSION['meldinger']);
-                    // Dersom logg inn ikke er suksessfull - print feilmelding
-                    } else { 
+                        // Dersom logg inn ikke er suksessfull - print feilmelding
+                    } else {
 
                         if (isset($_SESSION['feilmeldinger'])) {
                         ?>

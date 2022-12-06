@@ -1,4 +1,7 @@
-<?php require_once("../Includes/sjekkLogInn.php");
+
+<?php
+require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc.php');
+require_once("../Includes/sjekkLogInn.php");
 $bruker_data = check_login($con); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +39,6 @@ $bruker_data = check_login($con); ?>
 </body>
 </html>
 <?php
-require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc.php');
 
 if(isset($_GET['id'])){
     //henter annonseID ved id der det ble definert på forrige side
@@ -128,7 +130,7 @@ if($statement->rowCount() > 0) {
         //hoved inholdet til tabblene
     }
 } else {
-    echo "Queryen førte tin en tom resultat";
+    echo "Queryen førte til et tomt resultat";
     //melding om queryen er tom
 }
 ?>

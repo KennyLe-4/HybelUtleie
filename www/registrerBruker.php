@@ -30,7 +30,8 @@ if (isset($_REQUEST['registrer'])) {
     try {
         $q->execute();
     } catch (PDOException $e) {
-        echo "Error querying database: "(); //. $e->getMessage() . "<br>"; // Never do this in production
+        echo "Noe feil med tilkoblingen"; // Viser feilmelding til bruker, men ikke spesfikt hva.
+        //echo "Error querying database: "(); //. $e->getMessage() . "<br>"; // Never do this in production
     }
 
     //$q->debugDumpParams();

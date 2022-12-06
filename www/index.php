@@ -1,3 +1,4 @@
+<!-- Dette er index siden (start siden). Her har du mulighet til å lo -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,35 +22,21 @@
                     </svg></span><span>Hybel</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-2">
                 <ul class="navbar-nav ms-auto">
-                    <!-- Bruker $_SESSION for å hente ut navnet på den personen som er pålogget-->
-                    <li class="nav-item"><a class="nav-link active" href="#">  </a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#"> </a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                 </ul>
-                <a class="btn btn-secondary ms-md-2" role="button" href="listeAnnonser.php">Se Annonser</a>
-                <a class="btn btn-secondary ms-md-2" role="button" href="nyAnnonse.php">Ny annonse</a>
+                <!-- Logg inn og registrer knapp -->
+                <a class="btn btn-secondary ms-md-2" role="button" href="registrerBruker.php">Registrer her</a>
                 <a class="btn btn-primary ms-md-2" role="button" href="logginn.php">Logg inn</a>
+
+
             </div>
         </div>
     </nav>
     <div class="container py-4 py-xl-5">
         <div class="row mb-5">
             <div class="col-md-8 col-xl-6 text-center mx-auto">
-                <!-- Her sender vi en suksessfull melding, dersom logg inn ble gjennomført. -->
-                <?php
-
-                if (isset($_SESSION['meldinger'])) {
-                ?>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong> <?= $_SESSION['meldinger']; ?> </strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php
-                    unset($_SESSION['meldinger']);
-                }
-
-                ?>
-
                 <h2>HybelUtleie</h2>
                 <p class="w-lg-50">Logg inn for å lage og se annonser</p>
             </div>
