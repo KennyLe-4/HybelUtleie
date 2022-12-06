@@ -26,8 +26,7 @@ if($statement->rowCount() > 0) {
      
   
       
-        echo "<td width='310'>" . "<img src='/HybelUtleie/assets/phpZWQKq6.jpeg' alt='image' width='300' 
-        height='200'>" .  "</td>";
+      
         
         
         echo "</tr>";
