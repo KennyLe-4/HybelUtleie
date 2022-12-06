@@ -1,7 +1,7 @@
 <?php
 require_once('../Includes/db.inc.php');
 require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/VaskingAvTagger.inc.php');
-
+$messages = array();
 
 $sql = "INSERT INTO annonser (overskrift, beskrivelse, gateAdresse, pris, depositum, boligType, boligEtasje, antallRom, status, bilde) 
 VALUES 
@@ -22,7 +22,7 @@ $q = $pdo->prepare($sql); /* Forbedrer spørring */
         $q->bindParam(':bilde', $bilde, PDO::PARAM_STR);
 
 
-if (isset($_REQUEST['opprettAnnonse'])) {
+if (isset($_POST['opprettAnnonse'])) {
     $overskrift = vaskingAvTagger($_POST['overskrift']);
     $beskrivelse = vaskingAvTagger($_POST['beskrivelse']);
     $gateAdresse = vaskingAvTagger($_POST['gateAdresse']);
@@ -46,14 +46,17 @@ if (isset($_REQUEST['opprettAnnonse'])) {
         );
         $max_file_size = 2000000; // i bytes
 
+        
+
         $dir = $_SERVER['DOCUMENT_ROOT'] . "/HybelUtleie/bilder/";
 
 
-        // Mekker katalog, hvis den ikke allerede finnes
-        if (!file_exists($dir)) {
+         // Mekker katalog, hvis den ikke allerede finnes
+         if (!file_exists($dir)) {
             if (!mkdir($dir, 0777, true))
                 die("Cannot create directory..." . $dir);
         }
+
 
         // Sjekker hvilke filtype det er, gir dette til variablene, som brukes i navngenerering
         $suffix = array_search($_FILES['upload-file']['type'], $acc_file_types);
@@ -62,6 +65,8 @@ if (isset($_REQUEST['opprettAnnonse'])) {
         do {
             $filename  = basename( $_FILES["upload-file"]["tmp_name"]) . '.' . $suffix;
         } while (file_exists($dir . $filename));
+
+       
 
         /* Errors? */
         if (!in_array($file_type, $acc_file_types)) {
@@ -135,11 +140,11 @@ if (isset($_REQUEST['opprettAnnonse'])) {
             <div class="swiper-button-next"></div>
         </div>
     </div>
-    <div class="container" style="position:absolute; left:0; right:0; top: 50%; transform: translateY(-50%); -ms-transform: translateY(-50%); -moz-transform: translateY(-50%); -webkit-transform: translateY(-50%); -o-transform: translateY(-50%);">
+    <div class="container" style="padding: 30px"style="position:absolute; left:0; right:0; top: 50%; transform: translateY(-50%); -ms-transform: translateY(-50%); -moz-transform: translateY(-50%); -webkit-transform: translateY(-50%); -o-transform: translateY(-50%);">
         <div class="row d-flex d-xl-flex justify-content-center justify-content-xl-center">
             <div class="col-sm-12 col-lg-10 col-xl-9 col-xxl-7 bg-white shadow-lg" style="border-radius: 5px;">
                 <div class="p-5">
-				<h2 class="text-center mb-4">Ny annonse</h2>
+				<h2 class="text-center mb-4" >Ny annonse</h2>
                             <form method="post" enctype="multipart/form-data" >
                           	   <!-- Dette er insert feltene for overskrift, adresse, pris, depositum og beskrivelse-->
                                 <div class="mb-3"><input class="form-control" type="text" id="name-1" name="overskrift" placeholder="Overskrift" required></div> 
