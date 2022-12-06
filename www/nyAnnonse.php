@@ -58,7 +58,7 @@ if (isset($_REQUEST['opprettAnnonse'])) {
 
         // mekker navnet på filen, ved hjelp av ønskelig input + filtype
         do {
-            $filename  = htmlspecialchars( basename( $_FILES["upload-file"]["tmp_name"])) . '.' . $suffix;
+            $filename  = basename( $_FILES["upload-file"]["tmp_name"]) . '.' . $suffix;
         } while (file_exists($dir . $filename));
 
         /* Errors? */
