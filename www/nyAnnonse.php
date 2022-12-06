@@ -1,4 +1,6 @@
 <?php
+require_once("../Includes/sjekkLogInn.php");
+$bruker_data = check_login($con);
 require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc.php');
 require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/VaskingAvTagger.inc.php');
 $messages = array();
@@ -209,7 +211,7 @@ if (isset($_POST['opprettAnnonse'])) {
                         <option value="Annet">Annet</option>
                     </select><br>
 
-                    <div class="mb-3"><input name="upload-file" type="file" required><br></div>
+                    <div class="mb-3"><input  name="upload-file" type="file" required><br></div>
 
                     <!-- Dette er legg til fil knappen -->
                     <div><button class="btn btn-primary d-block w-100" name="opprettAnnonse" type="submit">Opprett annonse</button></div>

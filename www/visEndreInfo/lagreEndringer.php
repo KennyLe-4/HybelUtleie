@@ -1,6 +1,8 @@
 <?php
 
 require_once ('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc.php');
+require_once("/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/sjekkLogInn.php");
+$bruker_data = check_login($con);
 
 if(isset($_REQUEST['lagreEndringer'])){
 $bruker_id = $_REQUEST['bruker_id'];

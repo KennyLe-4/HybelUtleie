@@ -1,3 +1,6 @@
+<?php 
+require_once("../Includes/db.inc.php");
+require_once("../Includes/sjekkLogInn.php"); $bruker_data = check_login($con); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +12,7 @@
     <link rel="stylesheet" href=../assets/css/Navbar-Right-Links-icons.css>
     <link rel="stylesheet" href="../assets/css/Projects-Grid-images.css">
     <link rel="stylesheet" href="../assets/css/Simple-Slider-Simple-Slider.css">
-    <title>Document</title>
+    <title>Hybler</title>
 </head>
 <body>
 <nav class="navbar navbar-light navbar-expand-md py-3" data-aos="fade">
@@ -53,8 +56,8 @@ require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/controller/sorte
         <input type="submit" class="btn btn-primary" name="alle" value="Alle annonser">
         <input type="submit" class="btn btn-primary" name="tilgjengelig" value="Tilgjenglige">
         <input type="submit" class="btn btn-primary" name="nylig" value="Nylig lagt til">
-        <input type="submit" class="btn btn-primary" name="stigendePris" value="Pris - stigende (billigst først)">
-        <input type="submit" class="btn btn-primary" name="synkendePris" value="Pris - synkende (dyrest først)">
+        <input type="submit" class="btn btn-primary" name="stigendePris" value="Pris - synkende (dyrest først)">
+        <input type="submit" class="btn btn-primary" name="synkendePris" value="Pris - stigende (billigst først)">
 
 
 </form>

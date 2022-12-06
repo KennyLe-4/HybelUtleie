@@ -1,3 +1,5 @@
+<?php require_once("../Includes/sjekkLogInn.php");
+$bruker_data = check_login($con); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +11,7 @@
     <link rel="stylesheet" href=../assets/css/Navbar-Right-Links-icons.css>
     <link rel="stylesheet" href="../assets/css/Projects-Grid-images.css">
     <link rel="stylesheet" href="../assets/css/Simple-Slider-Simple-Slider.css">
-    <title>Document</title>
+    <title>Hybler</title>
 </head>
 <body>
 <nav class="navbar navbar-light navbar-expand-md py-3" data-aos="fade">
