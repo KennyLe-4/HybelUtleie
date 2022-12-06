@@ -37,5 +37,4 @@ if($statement->rowCount() > 0) {
 } else {
     echo "Queryen førte tin en tom resultat";
 }
-echo "test";
 ?>
