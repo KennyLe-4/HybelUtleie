@@ -38,26 +38,22 @@
     <div class="container d-flex flex-column align-items-center py-4 py-xl-5">
         <div class="row gy-4 w-100" style="max-width: 800px;">
             <div class="col-12">
-                <div class="card"><img class="card-img w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
+                <div class="card"><img class="card-img w-100 d-block" src="../bilder/studio.jpeg">
                     <div class="card-img-overlay text-center d-flex flex-column justify-content-center align-items-center p-4">
-                        <h4>Title</h4>
-                        <p>Volutpat habitasse risus posuere, commodo fusce donec. Turpis donec tristique.</p>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-md-6">
-                <div class="card"><img class="card-img w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
+            <div class="card"><img class="card-img w-100 d-block" src="../bilder/student.avif">
                     <div class="card-img-overlay text-center d-flex flex-column justify-content-center align-items-center p-4">
-                        <h4>Title</h4>
-                        <p>Volutpat habitasse risus posuere, commodo fusce donec. Turpis donec tristique.</p>
+                        
                     </div>
                 </div>
             </div>
             <div class="col-12 col-md-6">
-                <div class="card"><img class="card-img w-100 d-block" src="../bilder/0e7bd.png">
+            <div class="card"><img class="card-img w-100 d-block" src="../bilder/jada.avif">
+
                     <div class="card-img-overlay text-center d-flex flex-column justify-content-center align-items-center p-4">
-                        <h4>Title</h4>
-                        <p>Volutpat habitasse risus posuere, commodo fusce donec. Turpis donec tristique.</p>
                     </div>
                 </div>
             </div>
