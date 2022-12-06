@@ -109,8 +109,8 @@ if($statement->rowCount() > 0) {
         echo "<tr>";
         echo "<td>" . $annonse->gateAdresse . "</td>";
         echo "<td>" . $annonse->beskrivelse . "</td>";
-        echo "<td>" . $annonse->pris . "</td>";
-        echo "<td>" . $annonse->depositum . "</td>";
+        echo "<td>" . $annonse->pris . " Kroner" . "</td>";
+        echo "<td>" . $annonse->depositum . " Kroner" ."</td>";
         echo "<td>" . $annonse->opprettet . "</td>";
         echo "<td>" . $annonse->boligType . "</td>";
         echo "<td>" . $annonse->antallRom . "</td>";

@@ -41,7 +41,7 @@ class nyligeAnnonser
 
                 echo "<td>" . $annonse->overskrift . "</td>";
                 echo "<td>" . $annonse->gateAdresse . "</td>";
-                echo "<td>" . $annonse->pris . "</td>";
+                echo "<td>" . $annonse->pris . " Kroner" . "</td>";
                 echo "<td width='310'>" . "<img src='/HybelUtleie/bilder/" . $annonse->bilde . "' alt='image' width='300' 
         height='200'>" . "</td>";
  ?>
