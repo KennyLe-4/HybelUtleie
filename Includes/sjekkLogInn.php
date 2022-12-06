@@ -1,3 +1,4 @@
+<!-- MySQLi blir brukt her - pga brukt dette tidligere i modulene. -->
 <?php 
 $dbhost = "localhost";
 $dbuser = "root";
