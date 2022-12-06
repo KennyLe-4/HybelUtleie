@@ -28,7 +28,7 @@
                 </ul>
                 <a class="btn btn-secondary ms-md-2" role="button" href="listeAnnonser.php">Se Annonser</a>
                 <a class="btn btn-secondary ms-md-2" role="button" href="nyAnnonse.php">Ny annonse</a>
-                <a class="btn btn-primary ms-md-2" role="button" href="logginn.php">Logg inn for å se min profil</a>
+                <a class="btn btn-primary ms-md-2" role="button" href="logginn.php">Logg inn</a>
             </div>
         </div>
     </nav>
@@ -50,8 +50,8 @@
 
                 ?>
 
-                <h2>Heading</h2>
-                <p class="w-lg-50">Curae hendrerit donec commodo hendrerit egestas tempus, turpis facilisis nostra nunc. Vestibulum dui eget ultrices.</p>
+                <h2>HybelUtleie</h2>
+                <p class="w-lg-50">Logg inn for å lage og se annonser</p>
             </div>
             <div class="container d-flex flex-column align-items-center py-4 py-xl-5">
                 <div class="row gy-4 w-100" style="max-width: 800px;">
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
-                        <div class="card"><img class="card-img w-100 d-block" src="../assets/img/phpZEzuer.jpeg">
+                        <div class="card"><img class="card-img w-100 d-block" src="../assets/img/phpLPfx9i.jpeg">
                             <div class="card-img-overlay text-center d-flex flex-column justify-content-center align-items-center p-4">
                                 <h4></h4>
                                 <p></p>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
-                        <div class="card"><img class="card-img w-100 d-block" src="../assets/img/studio.jpg">
+                        <div class="card"><img class="card-img w-100 d-block" src="../assets/img/phpZEzuer.jpeg">
                             <div class="card-img-overlay text-center d-flex flex-column justify-content-center align-items-center p-4">
                                 <h4></h4>
                                 <p></p>

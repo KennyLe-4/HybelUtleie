@@ -1,7 +1,8 @@
 <?php
+require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc.php');
 require_once("../Includes/sjekkLogInn.php");
 $bruker_data = check_login($con);
-require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc.php');
+
 require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/VaskingAvTagger.inc.php');
 $messages = array();
 
