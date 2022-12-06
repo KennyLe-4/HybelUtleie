@@ -11,9 +11,28 @@ $statement->execute($data);
 
 $result = $statement->fetchAll(PDO::FETCH_OBJ); 
 
+
 }
-
-
+?>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+<div class="container">
+<div class="card-body" >
+<table  class='table table-bordered table-striped' style='float: right' width='500px' style='font-size:20px' >
+<div class='card-header'>
+<tr>
+<th> Overskrift  </th>
+<th> Adresse </th>
+<th> Beskrivelse</th>
+<th> Pris per Måned </th>
+<th> Depositum </th>
+<th> Annonsen ble oprettet</th>
+<th> Bolig Type</th>
+<th> Antall Rom</th>
+<th> Etasjer i boligen</th>
+<th> Er boligen tilgjengelig?</th>
+<th> Bilde </th>
+</tr>
+<?php
 if($statement->rowCount() > 0) {
     //hvis rowcount er større enn 0
     foreach($result as $annonse) {
@@ -22,7 +41,18 @@ if($statement->rowCount() > 0) {
         echo "<tr>";
         echo "<td>" . $annonse->overskrift . "</td>";
         echo "<td>" . $annonse->gateAdresse . "</td>";
+        echo "<td>" . $annonse->beskrivelse . "</td>";
         echo "<td>" . $annonse->pris . "</td>";
+        echo "<td>" . $annonse->depositum . "</td>";
+        echo "<td>" . $annonse->opprettet . "</td>";
+        echo "<td>" . $annonse->boligType . "</td>";
+        echo "<td>" . $annonse->antallRom . "</td>";
+        echo "<td>" . $annonse->boligEtasje . "</td>";
+        echo "<td>" . $annonse->status . "</td>";
+        echo "<td width='310'>" . "<img src='/HybelUtleie/bilder/" . $annonse->bilde . "' alt='image' width='300' 
+        height='200'>" .   "</td>";
+       
+
      
   
       
@@ -37,3 +67,5 @@ if($statement->rowCount() > 0) {
     echo "Queryen førte tin en tom resultat";
 }
 ?>
+</div>
+</div>

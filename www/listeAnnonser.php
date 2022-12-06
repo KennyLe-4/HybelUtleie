@@ -56,19 +56,19 @@ try {
     echo "Error querying database: " . $e->getMessage() . "<br>"; // Never do this in production
 }
 //slår opp feil  hvis queryen ikke går gjennom
-
-echo "<table  class='table table-bordered table-striped' style='float: right' width='500px' style='font-size:20px' >";
-echo "<div class='card-header'>";
-echo " 
+?>
+<table  class='table table-bordered table-striped' style='float: right' width='500px' style='font-size:20px' >
+<div class='card-header'>
+ 
  <tr>
- <th> Annonse ID  </th>
+ 
      <th> Overskrift  </th>
      <th> Adresse </th>
      <th> Pris per Måned </th>
-
      <th> Bilde </th>
      <th> Se Mer </th>
- </tr>";
+ </tr>
+ <?php
  //hode tabbel
 $annonser = $q->fetchAll(PDO::FETCH_OBJ);
 //annonser som henter informasjon fra pdo altså databasen
@@ -79,7 +79,7 @@ if($q->rowCount() > 0) {
         //går gjennom hver objekt i databsen
 
         echo "<tr>";
-        echo "<td>" . $annonse->annonseID . "</td>";
+     
         echo "<td>" . $annonse->overskrift . "</td>";
         echo "<td>" . $annonse->gateAdresse . "</td>";
         echo "<td>" . $annonse->pris . "</td>";
