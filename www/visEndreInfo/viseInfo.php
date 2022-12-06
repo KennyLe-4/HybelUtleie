@@ -38,7 +38,7 @@ require_once ('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc
 </body>
 </html>
 
-<div class="container">
+
  <div class="card-body" >
     <table class="table table-bordered table-striped">
         <?php //bruker design fra bootstrap her kommer det diverse klasser og designs ?>
@@ -99,4 +99,3 @@ require_once ('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc
                 //hvis det oppstår at noen uten bruker har tilgang til knappen blir den redigert til loginn siden
         }
         ?>
-        </div>

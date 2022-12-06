@@ -58,7 +58,9 @@ try {
 ?>
 <table  class='table table-bordered table-striped' style='float: right' width='500px' style='font-size:20px' >
 <div class='card-header'>
+ 
  <tr>
+ 
      <th> Overskrift  </th>
      <th> Adresse </th>
      <th> Pris per Måned </th>

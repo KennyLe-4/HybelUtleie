@@ -1,6 +1,5 @@
 <?php
 require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc.php');
-require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/VaskingAvTagger.inc.php');
 $messages = array();
 
 $sql = "INSERT INTO annonser (overskrift, beskrivelse, gateAdresse, pris, depositum, boligType, boligEtasje, antallRom, status, bilde) 
