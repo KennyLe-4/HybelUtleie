@@ -2,7 +2,7 @@
 require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/VaskingAvTagger.inc.php'); ?>
 
 
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css%22%3E
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <div class="container">
 <div class="card-body" >
 <h1>Annonser</h1>
@@ -24,6 +24,7 @@ echo "<table  class='table table-bordered table-striped' style='float: right' wi
 echo "<div class='card-header'>";
 echo " 
  <tr>
+ <th> Annonse ID  </th>
      <th> Overskrift  </th>
      <th> Adresse </th>
      <th> Pris per Måned </th>
@@ -45,19 +46,18 @@ if($q->rowCount() > 0) {
         echo "<td>" . $annonse->overskrift . "</td>";
         echo "<td>" . $annonse->gateAdresse . "</td>";
         echo "<td>" . $annonse->pris . "</td>";
-
-
-
         echo "<td width='310'>" . "<img src='/HybelUtleie/bilder/" . $annonse->bilde . "' alt='image' width='300' 
         height='200'>" .   "</td>";
-        echo "<td width='250'>" . '<a href="seAnnonse.php?id=<?=$annonse->annonseID; ?>" class="btn btn-primary ">Ser mer om Boligen her</a>' . "</td>";
+       ?>
+    <td>  <a href="seAnnonse.php?id=<?=$annonse->annonseID; ?>" class="btn btn-primary ">Se Mer om Boligen her</a></td>
 
+<?php
         echo "</tr>";
         //hoved inholdet til tabblene
 
     }
 } else {
-    echo "Queryen førte tin en tom resultat";
+    echo "Queryen førte til en tom resultat";
 }
 
 
