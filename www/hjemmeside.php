@@ -62,7 +62,7 @@ require_once ('../Includes/db.inc.php');
             <div class="container d-flex flex-column align-items-center py-4 py-xl-5">
         <div class="row gy-4 w-100" style="max-width: 800px;">
             <div class="col-12">
-                <div class="card"><img class="card-img w-100 d-block" src="../bilder/studio.jpeg">
+                <div class="card"><img class="card-img w-100 d-block" src="../assets/img/jada.avif">
 
                     <div class="card-img-overlay text-center d-flex flex-column justify-content-center align-items-center p-4">
                         <h4></h4>
@@ -71,7 +71,7 @@ require_once ('../Includes/db.inc.php');
                 </div>
             </div>
             <div class="col-12 col-md-6">
-                <div class="card"><img class="card-img w-100 d-block" src="../bilder/student.avif">
+                <div class="card"><img class="card-img w-100 d-block" src="../assets/img/student.avif">
                     <div class="card-img-overlay text-center d-flex flex-column justify-content-center align-items-center p-4">
                         <h4></h4>
                         <p></p>
@@ -79,7 +79,7 @@ require_once ('../Includes/db.inc.php');
                 </div>
             </div>
             <div class="col-12 col-md-6">
-                <div class="card"><img class="card-img w-100 d-block" src="../bilder/jada.avif">
+                <div class="card"><img class="card-img w-100 d-block" src="../assets/img/studio.jpg">
                     <div class="card-img-overlay text-center d-flex flex-column justify-content-center align-items-center p-4">
                         <h4></h4>
                         <p></p>
