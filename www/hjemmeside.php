@@ -75,7 +75,7 @@ $bruker_data = check_login($con);
                 </div>
             </div>
             <div class="col-12 col-md-6">
-                <div class="card"><img class="card-img w-100 d-block" src="../assets/img/phpZEzuer.jpeg">
+                <div class="card"><img class="card-img w-100 d-block" src="../assets/img/phpLPfx9i.jpeg">
                     <div class="card-img-overlay text-center d-flex flex-column justify-content-center align-items-center p-4">
                         <h4></h4>
                         <p></p>
@@ -83,7 +83,7 @@ $bruker_data = check_login($con);
                 </div>
             </div>
             <div class="col-12 col-md-6">
-                <div class="card"><img class="card-img w-100 d-block" src="../assets/img/studio.jpg">
+                <div class="card"><img class="card-img w-100 d-block" src="../assets/img/phpZEzuer.jpeg">
                     <div class="card-img-overlay text-center d-flex flex-column justify-content-center align-items-center p-4">
                         <h4></h4>
                         <p></p>
