@@ -21,7 +21,7 @@ require_once("/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc.
     <div class="card">
         <div class="card-header">
             <h3>Endre og oppdater bruker
-                <a href="../hjemmeside.php" class="btn btn-danger float-end">Hjem</a>
+                <a href="../hjemmeside.php" class="btn btn-primary float-end" >Hjem</a>
                 <?php //hjem knapp hvis brukeren skal til hjemmeside?>
                 </h3>
         </div>
