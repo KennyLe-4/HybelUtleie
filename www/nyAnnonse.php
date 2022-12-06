@@ -120,11 +120,11 @@ if (isset($_REQUEST['opprettAnnonse'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>hybel</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/Navbar-Right-Links-icons.css">
-    <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
-    <link rel="stylesheet" href="assets/css/Simple-Slider-Simple-Slider.css">
+    <link rel="stylesheet" href="../assets/css/Navbar-Right-Links-icons.css">
+    <link rel="stylesheet" href="../assets/css/Projects-Grid-images.css">
+    <link rel="stylesheet" href="../assets/css/Simple-Slider-Simple-Slider.css">
 </head>
 
 <body>
@@ -135,7 +135,7 @@ if (isset($_REQUEST['opprettAnnonse'])) {
             <div class="swiper-button-next"></div>
         </div>
     </div>
-    <div class="container" style="position:absolute; left:0; right:0; top: 50%; transform: translateY(-50%); -ms-transform: translateY(-50%); -moz-transform: translateY(-50%); -webkit-transform: translateY(-50%); -o-transform: translateY(-50%);">
+    <div class="container" style="padding: 30px" style="position:absolute; left:0; right:0; top: 50%; transform: translateY(-50%); -ms-transform: translateY(-50%); -moz-transform: translateY(-50%); -webkit-transform: translateY(-50%); -o-transform: translateY(-50%);">
         <div class="row d-flex d-xl-flex justify-content-center justify-content-xl-center">
             <div class="col-sm-12 col-lg-10 col-xl-9 col-xxl-7 bg-white shadow-lg" style="border-radius: 5px;">
                 <div class="p-5">
