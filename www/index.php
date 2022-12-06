@@ -12,10 +12,6 @@
     <link rel="stylesheet" href="../assets/css/Projects-Grid-images.css">
     <link rel="stylesheet" href="../assets/css/Simple-Slider-Simple-Slider.css">
 </head>
-<?php if(isset($_SESSION['message'])) : ?>
-    <h5 class="alert alert_success"><?= $_SESSION['message']?></h5>
-    <?php unset($_SESSION['message']);
-    endif; ?>
 <body>
     
     <nav class="navbar navbar-light navbar-expand-md py-3" data-aos="fade">
