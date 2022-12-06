@@ -39,7 +39,7 @@ if (isset($_POST['logginn'])) { //ser hvis brukeren prøver å logge inn
 
         } else {
 
-            $_SESSION['feilmeldinger'] = "Prøv igjen!"; // Lager session feil elding
+            $_SESSION['feilmeldinger'] = "Prøv igjen!"; // Lager session feilmelding
             header('Location: logginn.php'); // Blir værende på siden, men får feil melding. 
             exit();
         }
@@ -91,7 +91,7 @@ if (isset($_POST['logginn'])) { //ser hvis brukeren prøver å logge inn
                         if (isset($_SESSION['feilmeldinger'])) {
                         ?>
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong>Logg inn mislyktes!</strong> <?= $_SESSION['feilmeldinger']; ?>
+                                <strong>Feil brukernavn eller passord!</strong> <?= $_SESSION['feilmeldinger']; ?>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                     <?php
