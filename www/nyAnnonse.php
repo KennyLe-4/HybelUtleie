@@ -158,6 +158,7 @@ if (isset($_POST['opprettAnnonse'])) {
                         <li class="nav-item"></li>
                         <li class="nav-item"></li>
                     </ul>
+                    <a class="btn btn-secondary ms-md-2" role="button" href="./omOss.php">Om Oss</a>
                     <a class="btn btn-secondary ms-md-2" role="button" href="./visEndreInfo/viseInfo.php">Min profil</a>
                     <a class="btn btn-secondary ms-md-2" role="button" href="./listeAnnonser.php">Se Annonser</a>
                     <a class="btn btn-secondary ms-md-2" role="button" href="./nyAnnonse.php">Ny annonse</a>

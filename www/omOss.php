@@ -61,13 +61,15 @@ $bruker_data = check_login($con);
 
 ?>
 
-                <h2>Heading</h2>
-                <p class="w-lg-50">Curae hendrerit donec commodo hendrerit egestas tempus, turpis facilisis nostra nunc. Vestibulum dui eget ultrices.</p>
+                <h2 >Om Oss</h2>
+                <p style="float: left">Vi er to stykk som har jobbet på dette prosjektet. Kevin og Kenny. Gjennom dette prosjektet har vi lært veldig mye og har vært veldig gøy og noen ganger frustrerende.
+                    Vi er veldig glade for å lære så mye på kort tid og er glad vi tar dette videre i våres programmerings karrierer. 
+                </p>
             </div>
             <div class="container d-flex flex-column align-items-center py-4 py-xl-5">
-        <div class="row gy-4 w-100" style="max-width: 800px;">
+        <div class="row gy-4 w-100" style="max-width: 400px;" style="height: 300px;">
             <div class="col-12">
-                <div class="card"><img class="card-img w-100 d-block" src="../assets/img/phpsXHwhM.jpeg">
+                <div class="card"><img class="card-img w-100 d-block"  src="../assets/img/IMG_1437.jpg">
 
                     <div class="card-img-overlay text-center d-flex flex-column justify-content-center align-items-center p-4">
                         <h4></h4>
@@ -75,19 +77,7 @@ $bruker_data = check_login($con);
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6">
-                <div class="card"><img class="card-img w-100 d-block" src="../assets/img/phpLPfx9i.jpeg">
-                    <div class="card-img-overlay text-center d-flex flex-column justify-content-center align-items-center p-4">
-                        <h4></h4>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6">
-                <div class="card"><img class="card-img w-100 d-block" src="../assets/img/phpZEzuer.jpeg">
-                    <div class="card-img-overlay text-center d-flex flex-column justify-content-center align-items-center p-4">
-                        <h4></h4>
-                        <p></p>
+           
                     </div>
                 </div>
             </div>
@@ -108,9 +98,9 @@ $bruker_data = check_login($con);
                         <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column item">
                             <h3 class="fs-6">Om Oss</h3>
                             <ul class="list-unstyled">
-                                <li><a class="link-secondary" href="omOss.php">Se side om Oss</a></li>
-                                <li><a class="link-secondary" href="omOss.php">Det vi holder på med</a></li>
-                                <li><a class="link-secondary" href="omOss.php">Hvordan vi startet</a></li>
+                                <li><a class="link-secondary" href="#">Se side om Oss</a></li>
+                                <li><a class="link-secondary" href="#">Det vi holder på med</a></li>
+                                <li><a class="link-secondary" href="#">Hvordan vi startet</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column item">
