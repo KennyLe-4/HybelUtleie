@@ -1,6 +1,5 @@
 <?php
-require_once('../Includes/db.inc.php');
-require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/VaskingAvTagger.inc.php');
+require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/Includes/db.inc.php');
 $messages = array();
 
 $sql = "INSERT INTO annonser (overskrift, beskrivelse, gateAdresse, pris, depositum, boligType, boligEtasje, antallRom, status, bilde) 
@@ -125,11 +124,11 @@ if (isset($_POST['opprettAnnonse'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>hybel</title>
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
-    <link rel="stylesheet" href="../assets/css/Navbar-Right-Links-icons.css">
-    <link rel="stylesheet" href="../assets/css/Projects-Grid-images.css">
-    <link rel="stylesheet" href="../assets/css/Simple-Slider-Simple-Slider.css">
+    <link rel="stylesheet" href="/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/assets/css/Navbar-Right-Links-icons.css">
+    <link rel="stylesheet" href="/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/assets/css/Projects-Grid-images.css">
+    <link rel="stylesheet" href="/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/assets/css/Simple-Slider-Simple-Slider.css">
 </head>
 
 <body>
@@ -220,9 +219,9 @@ if (isset($_POST['opprettAnnonse'])) {
         </div>
     </section>
                     
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
-    <script src="assets/js/Simple-Slider.js"></script>
+    <script src=""></script>
 </body>
 
 </html>
