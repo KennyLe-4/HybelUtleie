@@ -50,11 +50,11 @@ require_once('/Applications/XAMPP/xamppfiles/htdocs/HybelUtleie/controller/sorte
 <div class="card-body" >
 <h1>Annonser</h1>
 <form method="post" action="">
-        <input type="submit" name="alle" value="Alle annonser">
-        <input type="submit" name="tilgjengelig" value="Tilgjenglige">
-        <input type="submit" name="nylig" value="Nylig lagt til">
-        <input type="submit" name="stigendePris" value="Pris - stigende (billigst først)">
-        <input type="submit" name="synkendePris" value="Pris - synkende (dyrest først)">
+        <input type="submit" class="btn btn-primary" name="alle" value="Alle annonser">
+        <input type="submit" class="btn btn-primary" name="tilgjengelig" value="Tilgjenglige">
+        <input type="submit" class="btn btn-primary" name="nylig" value="Nylig lagt til">
+        <input type="submit" class="btn btn-primary" name="stigendePris" value="Pris - stigende (billigst først)">
+        <input type="submit" class="btn btn-primary" name="synkendePris" value="Pris - synkende (dyrest først)">
 
 
 </form>
