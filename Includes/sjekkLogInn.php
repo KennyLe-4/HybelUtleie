@@ -16,7 +16,7 @@ if(!$con = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname))
 function check_login($con)
 {
 
-
+	//funksjon for å sjekke om en bruker har logget inn og har tilgang til nettsiden
 	if(isset($_SESSION['brukerID']))
 	{
 
@@ -31,7 +31,6 @@ function check_login($con)
 			return $user_data;
 		}
 	}
-	//funksjon for å sjekke om en bruker har logget inn og har tilgang til nettsiden
 
 
 	//redirect til login
