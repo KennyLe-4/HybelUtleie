@@ -70,7 +70,6 @@ if (isset($_POST['opprettAnnonse'])) {
         } while (file_exists($dir . $filename));
 
 
-
         /* Feilmeldinger */
         if (!in_array($file_type, $acc_file_types)) {
             $types = implode(", ", array_keys($acc_file_types));
